@@ -4,46 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.annaroxas.teamdiscovery.System">
+    tools:context="com.example.annaroxas.teamdiscovery.System"
+    android:background="@drawable/BACKGROUND"
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Info"
-        tools:layout_editor_absoluteX="924dp"
-        tools:layout_editor_absoluteY="417dp" />
+    >
+
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="133dp"
-        android:layout_height="67dp"
-        android:text="Login"
-        tools:layout_editor_absoluteX="403dp"
-        tools:layout_editor_absoluteY="132dp" />
+        android:id="@+id/login"
+        android:layout_width="337dp"
+        android:layout_height="78dp"
+        android:background="@drawable/LOGIN"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="136dp"
-        android:layout_height="68dp"
-        android:text="Create User"
-        tools:layout_editor_absoluteX="403dp"
-        tools:layout_editor_absoluteY="207dp" />
+        android:id="@+id/createuser"
+        android:layout_width="340dp"
+        android:layout_height="79dp"
+        android:background="@drawable/CREATEUSER"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintVertical_bias="0.483" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="223dp"
-        android:layout_height="68dp"
-        android:text="Learning To Love Reading!"
-        tools:layout_editor_absoluteX="369dp"
-        tools:layout_editor_absoluteY="35dp" />
+    <ImageView
+        android:id="@+id/LLRP"
+        android:layout_width="601dp"
+        android:layout_height="52dp"
+        app:srcCompat="@drawable/LLRP_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        app:layout_constraintHorizontal_bias="0.501" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="188dp"
+        android:layout_height="176dp"
+        app:srcCompat="@drawable/LOGO"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="43dp"
+        android:layout_height="39dp"
+        android:background="@null"
+        app:srcCompat="@android:drawable/ic_menu_preferences"
+        tools:layout_editor_absoluteX="909dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        tools:layout_editor_absoluteX="924dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="20dp" />
 
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="19dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="38dp"
+        android:layout_height="41dp"
+        android:background="@null"
+        app:srcCompat="@android:drawable/ic_menu_info_details"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/createuser"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintVertical_bias="0.964" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline3"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="20dp" />
 </android.support.constraint.ConstraintLayout>
