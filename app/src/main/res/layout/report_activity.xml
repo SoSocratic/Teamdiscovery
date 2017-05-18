@@ -7,20 +7,14 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="back to configuration"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="29dp" />
-
-    <TextView
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avatar, Child 1 progress report"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="80dp" />
+        android:text="Child 1 progress report"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="89dp" />
 
     <TextView
         android:id="@+id/textView37"
@@ -31,18 +25,34 @@
         tools:layout_editor_absoluteY="221dp" />
 
     <TextView
-        android:id="@+id/textView38"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save report to pdf"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="377dp" />
-
-    <TextView
         android:id="@+id/textView39"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email report"
         tools:layout_editor_absoluteX="515dp"
         tools:layout_editor_absoluteY="377dp" />
+
+    <ImageButton
+        android:id="@+id/Back_to_Configuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?attr/homeAsUpIndicator"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageButton
+        android:id="@+id/Childs_Avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/dialog_holo_light_frame"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <ImageButton
+        android:id="@+id/Save_Report_PDF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_save"
+        tools:layout_editor_absoluteX="268dp"
+        tools:layout_editor_absoluteY="359dp" />
 </android.support.constraint.ConstraintLayout>
