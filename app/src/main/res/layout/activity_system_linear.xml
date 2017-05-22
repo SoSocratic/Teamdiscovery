@@ -1,42 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:background="@drawable/BACKGROUND"
+    android:background="@drawable/background"
 
 
     android:weightSum="1"
     android:baselineAligned="false"
     android:orientation="vertical">
 
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_width="54dp"
+        android:layout_height="59dp"
+        android:adjustViewBounds="false"
+        tools:layout_editor_absoluteY="16dp"
+        android:background="@drawable/settings"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.983" />
+
+    <ImageView
+        android:id="@+id/logo_view"
+        android:layout_width="785dp"
+        android:layout_height="219dp"
+        app:srcCompat="@drawable/logo"
+        tools:ignore="ContentDescription"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.507" />
+
+    <ImageView
+        android:id="@+id/title_view"
+        android:layout_width="542dp"
+        android:layout_height="89dp"
+        app:srcCompat="@drawable/llrp_name_whole"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="ContentDescription"
+        android:layout_marginBottom="-20dp" />
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="793dp"
-        android:layout_height="229dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/LOGO" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/LLRP_name" />
+        android:layout_width="542dp"
+        android:layout_height="89dp"
+        android:layout_marginBottom="61dp"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/llrp_name"
+        tools:ignore="ContentDescription"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="271dp"
-        android:layout_height="60dp"
-        android:background="@drawable/LOGIN"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.08" />
+        android:id="@+id/login_button"
+        android:layout_width="321dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="23dp"
+        android:background="@drawable/login"
+        app:layout_constraintBottom_toTopOf="@+id/createuser_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/createuser_button"
+        app:layout_constraintRight_toRightOf="@+id/createuser_button"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <Button
+        android:id="@+id/createuser_button"
+        android:layout_width="321dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="541dp"
+        android:background="@drawable/createuser"
+        android:onClick="startActivity"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintHorizontal_bias="0.517" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="55dp"
+        android:layout_height="52dp"
+        app:srcCompat="@android:drawable/ic_menu_info_details"
+        android:layout_marginTop="552dp"
+        android:background="@drawable/about"
+        app:layout_constraintTop_toBottomOf="@+id/settings_button"
+        app:layout_constraintLeft_toRightOf="@+id/createuser_button"
+        android:layout_marginStart="274dp"
+        android:layout_marginLeft="268dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="20dp"
+        tools:layout_editor_absoluteX="0dp" />
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
