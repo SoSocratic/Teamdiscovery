@@ -20,14 +20,12 @@ public class System extends AppCompatActivity {
     }
 
     public void startLogin(View view) {
-        /**
-         Intent intent = new Intent(this, DisplayMessageActivity.class);
-         EditText editText = (EditText) findViewById(R.id.editText);
-         String message = editText.getText().toString();
-         intent.putExtra(EXTRA_MESSAGE, message);
-         startActivity(intent);
-         **/
         Intent logInUser = new Intent(this, LoginPage.class);
         startActivity(logInUser);
+    }
+
+    public void logInSuccess(View view){
+        Intent loggedIn = new Intent(this, SuccessLogin.class);
+        startActivity(loggedIn);
     }
 }

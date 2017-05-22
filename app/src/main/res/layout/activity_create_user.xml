@@ -8,8 +8,8 @@
     android:background="@drawable/background">
 
     <EditText
-        android:id="@+id/username_textbox"
-        android:labelFor="@+id/username_textbox"
+        android:id="@+id/edit_text_login_user"
+        android:labelFor="@+id/edit_text_login_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -21,12 +21,12 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/password_textbox"
+        app:layout_constraintBottom_toTopOf="@+id/edit_text_login_pass"
         app:layout_constraintVertical_bias="0.85" />
 
     <EditText
-        android:id="@+id/password_textbox"
-        android:labelFor="@+id/password_textbox"
+        android:id="@+id/edit_text_login_pass"
+        android:labelFor="@+id/edit_text_login_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -54,7 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/username_textbox"
+        app:layout_constraintRight_toLeftOf="@+id/edit_text_login_user"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.344"
         tools:layout_editor_absoluteX="273dp" />
@@ -73,7 +73,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/password_textbox"
+        app:layout_constraintRight_toLeftOf="@+id/edit_text_login_pass"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.120000005" />
 </android.support.constraint.ConstraintLayout>
