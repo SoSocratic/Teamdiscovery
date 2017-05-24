@@ -8,6 +8,6 @@ public class System extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_system);
+        setContentView(R.layout.activity_system_linear);
     }
 }
