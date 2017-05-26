@@ -7,18 +7,18 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="home"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="29dp" />
-
-    <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="video display"
-        tools:layout_editor_absoluteX="357dp"
-        tools:layout_editor_absoluteY="260dp" />
+        tools:layout_editor_absoluteX="440dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+    <ImageButton
+        android:id="@+id/Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>
