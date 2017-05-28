@@ -16,11 +16,12 @@
         android:layout_width="54dp"
         android:layout_height="59dp"
         android:adjustViewBounds="false"
-        tools:layout_editor_absoluteY="16dp"
         android:background="@drawable/settings"
+        android:layout_marginRight="39dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.983" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="39dp" />
 
     <ImageView
         android:id="@+id/logo_view"
@@ -28,7 +29,7 @@
         android:layout_height="219dp"
         app:srcCompat="@drawable/logo"
         tools:ignore="ContentDescription"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/as_llrp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,8 +37,8 @@
 
     <ImageView
         android:id="@+id/title_view"
-        android:layout_width="542dp"
-        android:layout_height="89dp"
+        android:layout_width="536dp"
+        android:layout_height="76dp"
         app:srcCompat="@drawable/llrp_name_whole"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
@@ -46,14 +47,10 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:ignore="ContentDescription"
-<<<<<<< HEAD
-        android:layout_marginBottom="-20dp" />
-=======
-        android:layout_marginBottom="-36dp" />
->>>>>>> master
+        android:layout_marginBottom="0dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/as_llrp"
         android:layout_width="542dp"
         android:layout_height="89dp"
         android:layout_marginBottom="61dp"
@@ -101,12 +98,12 @@
         android:layout_width="55dp"
         android:layout_height="52dp"
         app:srcCompat="@android:drawable/ic_menu_info_details"
-        android:layout_marginTop="552dp"
         android:background="@drawable/about"
-        app:layout_constraintTop_toBottomOf="@+id/settings_button"
-        app:layout_constraintLeft_toRightOf="@+id/createuser_button"
-        android:layout_marginStart="274dp"
-        android:layout_marginLeft="268dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="38dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="38dp"  />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
