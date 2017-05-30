@@ -1,16 +1,27 @@
 package com.example.annaroxas.teamdiscovery;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import java.util.Objects;
 
 public class Create_user extends AppCompatActivity {
 
     private static final String TAG = LoginPage.class.getSimpleName();
-    EditText passText, nameText;
+    private static Button button_confirm;
+    EditText passText, nameText, confirmText, emailText;
+    boolean formComplete;
+    private static final String error = "The passwords do not match. Please try again.",
+            button_label = "Ok", test = "Passwords Match.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +29,69 @@ public class Create_user extends AppCompatActivity {
         setContentView(R.layout.activity_create_user);
 
         //Grab the reference of EditText fields
-        passText = (EditText) findViewById(R.id.edit_text_login_pass);
-        nameText = (EditText) findViewById(R.id.edit_text_login_user);
+        passText = (EditText) findViewById(R.id.edit_text_pass);
+        nameText = (EditText) findViewById(R.id.edit_text_user);
+        confirmText = (EditText) findViewById(R.id.edit_text_confirm);
+        emailText = (EditText) findViewById(R.id.edit_text_email);
 
         //Add text watcher to the EditText fields
         passText.addTextChangedListener(checkEditorText);
         nameText.addTextChangedListener(checkEditorText);
+        confirmText.addTextChangedListener(checkEditorText);
+        emailText.addTextChangedListener(checkEditorText);
+        button_confirm = (Button) findViewById(R.id.confirm_button);
+    }
+
+    public void clickConfirm(){
+
+
+        //Check for equality between the password edit text field and the confirm password
+        //edit text field
+        if(Objects.equals(passText.getText().toString(),confirmText.getText().toString())){
+            /*
+        * CODE TO INSERT NEW USER INFO INTO XML
+        * GOES HERE
+        * */
+            button_confirm.setOnClickListener(
+                    new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v){
+                            AlertDialog.Builder error_builder = new AlertDialog.Builder(Create_user.this);
+                            error_builder.setMessage(test)
+                                    .setPositiveButton(button_label, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                            AlertDialog pass_error = error_builder.create();
+                            pass_error.show();
+                        }
+                    }
+            );
+        } else {
+            button_confirm.setOnClickListener(
+                    new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v){
+                            AlertDialog.Builder error_builder = new AlertDialog.Builder(Create_user.this);
+                            error_builder.setMessage(error)
+                                    .setPositiveButton(button_label, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                            AlertDialog pass_error = error_builder.create();
+                            pass_error.show();
+                        }
+                    }
+            );
+        }
+
+
     }
 
     private final TextWatcher checkEditorText = new TextWatcher() {
@@ -35,11 +103,18 @@ public class Create_user extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            if( nameText.getText().toString().length() == 0 )
+            if( nameText.getText().toString().length() == 0 ){
                 nameText.setError( "Username is a required field" );
+            }
 
             if( passText.getText().toString().length() == 0 )
                 passText.setError( "Password is a required field" );
+
+            if( emailText.getText().toString().length() == 0 )
+                emailText.setError( "Password is a required field" );
+
+            if( confirmText.getText().toString().length() == 0 )
+                confirmText.setError( "Password is a required field" );
 
         }
          @Override
