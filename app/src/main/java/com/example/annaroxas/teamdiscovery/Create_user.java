@@ -1,25 +1,23 @@
 package com.example.annaroxas.teamdiscovery;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.Objects;
 
+
 public class Create_user extends AppCompatActivity {
 
     private static final String TAG = LoginPage.class.getSimpleName();
     private static Button button_confirm;
     EditText passText, nameText, confirmText, emailText;
-    boolean formComplete;
     private static final String error = "The passwords do not match. Please try again.",
             button_label = "Ok", test = "Passwords Match.";
 
@@ -40,59 +38,28 @@ public class Create_user extends AppCompatActivity {
         confirmText.addTextChangedListener(checkEditorText);
         emailText.addTextChangedListener(checkEditorText);
         button_confirm = (Button) findViewById(R.id.confirm_button);
-    }
 
-    public void clickConfirm(){
-
-
-        //Check for equality between the password edit text field and the confirm password
-        //edit text field
-        if(Objects.equals(passText.getText().toString(),confirmText.getText().toString())){
+        // Capture button clicks
+        button_confirm.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                if(Objects.equals(passText.getText().toString(),confirmText.getText().toString())){
             /*
         * CODE TO INSERT NEW USER INFO INTO XML
         * GOES HERE
         * */
-            button_confirm.setOnClickListener(
-                    new View.OnClickListener(){
-                        @Override
-                        public void onClick(View v){
-                            AlertDialog.Builder error_builder = new AlertDialog.Builder(Create_user.this);
-                            error_builder.setMessage(test)
-                                    .setPositiveButton(button_label, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.cancel();
-                                        }
-                                    });
 
-                            AlertDialog pass_error = error_builder.create();
-                            pass_error.show();
-                        }
-                    }
-            );
-        } else {
-            button_confirm.setOnClickListener(
-                    new View.OnClickListener(){
-                        @Override
-                        public void onClick(View v){
-                            AlertDialog.Builder error_builder = new AlertDialog.Builder(Create_user.this);
-                            error_builder.setMessage(error)
-                                    .setPositiveButton(button_label, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.cancel();
-                                        }
-                                    });
+                } else {
+                    FragmentManager fm = getFragmentManager();
+                    SingleResponseDialog alertdFragment = SingleResponseDialog.newInstance("Password Mismatch!",
+                            "Please re-enter your password and try again.", "Ok");
+                    // Show Alert DialogFragment
+                    alertdFragment.show(fm, "Confirm Error");
+                }
 
-                            AlertDialog pass_error = error_builder.create();
-                            pass_error.show();
-                        }
-                    }
-            );
-        }
-
-
+            }
+        });
     }
+
 
     private final TextWatcher checkEditorText = new TextWatcher() {
         @Override
@@ -122,4 +89,5 @@ public class Create_user extends AppCompatActivity {
 
         }
     };
+
 }
