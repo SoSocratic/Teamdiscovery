@@ -50,7 +50,7 @@
         app:srcCompat="@drawable/llrp_name"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintBottom_toTopOf="@+id/loginpage_login_button"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="61dp"
@@ -58,7 +58,7 @@
         tools:ignore="ContentDescription" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/loginpage_login_button"
         android:layout_width="271dp"
         android:layout_height="60dp"
         android:layout_marginBottom="23dp"

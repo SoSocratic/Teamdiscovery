@@ -1,12 +1,15 @@
 package com.example.annaroxas.teamdiscovery;
 
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * Created by annaroxas on 2017-05-04.
@@ -15,12 +18,14 @@ import android.widget.TextView;
 public class LoginPage extends AppCompatActivity {
     private static final String TAG = LoginPage.class.getSimpleName();
     EditText passText, nameText;
-    TextView textViewPass, textViewName;
+    Button login_button, create_user_button;
+    private static final String message = "Please fill in the required fields and try again.",
+            button_label = "Ok", title = "No User name or Password entered";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
-            Log.d(TAG, "savedInstanceState fucked right up");
+            Log.d(TAG, "savedInstanceState DALE fucked right up");
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
@@ -31,8 +36,41 @@ public class LoginPage extends AppCompatActivity {
         //Add text watcher to the EditText fields
         passText.addTextChangedListener(checkEditorText);
         nameText.addTextChangedListener(checkEditorText);
+        login_button = (Button) findViewById(R.id.loginpage_login_button);
+        create_user_button = (Button) findViewById(R.id.create_new_user_button);
+
+        // Capture button clicks
+        login_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                if(nameText.getText().toString().length() > 0 &&
+                        passText.getText().toString().length() > 0){
+            /*
+        * CODE TO COMPARE entered text to stored XML values
+        * */
+
+                } else {
+                    FragmentManager fm = getFragmentManager();
+                    SingleResponseDialog alertdFragment = SingleResponseDialog.newInstance(title,
+                            message, button_label);
+                    // Show Alert DialogFragment
+                    alertdFragment.show(fm, "Fields Empty Error");
+                }
+
+            }
+        });
+
+        // Capture button clicks
+        create_user_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                Intent create_user = new Intent(getApplicationContext(),Create_user.class);
+                create_user.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(create_user);
+            }
+        });
+
 
     }
+
 
     private final TextWatcher checkEditorText = new TextWatcher() {
         @Override
