@@ -18,8 +18,8 @@ public class Create_user extends AppCompatActivity {
     private static final String TAG = LoginPage.class.getSimpleName();
     private static Button button_confirm;
     EditText passText, nameText, confirmText, emailText;
-    private static final String error = "The passwords do not match. Please try again.",
-            button_label = "Ok", test = "Passwords Match.";
+    private static final String message = "Please re-enter your password and try again.",
+            button_label = "Ok", title = "Passwords Mismatch.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,8 @@ public class Create_user extends AppCompatActivity {
 
                 } else {
                     FragmentManager fm = getFragmentManager();
-                    SingleResponseDialog alertdFragment = SingleResponseDialog.newInstance("Password Mismatch!",
-                            "Please re-enter your password and try again.", "Ok");
+                    SingleResponseDialog alertdFragment = SingleResponseDialog.newInstance(title,
+                            "message", "Ok");
                     // Show Alert DialogFragment
                     alertdFragment.show(fm, "Confirm Error");
                 }
