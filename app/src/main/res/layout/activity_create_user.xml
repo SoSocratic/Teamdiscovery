@@ -18,9 +18,14 @@
         android:textColorHint="@android:color/white"
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/white"
-        app:layout_constraintHorizontal_bias="0.035"
-        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_uname"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_email" />
+        app:layout_constraintLeft_toRightOf="@+id/ac_tv_email"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_email"
+        android:layout_marginEnd="8dp" />
 
     <EditText
         android:id="@+id/ac_tx_repword"
@@ -32,10 +37,14 @@
         android:textColorHint="@android:color/white"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_repword"
-        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_pword"
-        android:layout_marginLeft="-3dp"
-        android:layout_marginBottom="-5dp" />
+        tools:layout_editor_absoluteY="397dp"
+        app:layout_constraintLeft_toRightOf="@+id/ac_tv_repword"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <EditText
         android:id="@+id/ac_tx_pword"
@@ -47,9 +56,15 @@
         android:hint=""
         android:textColor="@android:color/white"
         android:inputType="textPassword"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_email"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_pword" />
+        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_pword"
+        app:layout_constraintLeft_toRightOf="@+id/ac_tv_pword"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintVertical_bias="0.499"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/ac_tv_pword"
@@ -58,48 +73,34 @@
         android:text="Password:"
         android:textColor="@android:color/white"
         android:textSize="35dp"
-        app:layout_constraintTop_toBottomOf="@+id/ac_tv_email"
-        app:layout_constraintBottom_toTopOf="@+id/ac_tv_repword"
-        app:layout_constraintRight_toRightOf="@+id/ac_tv_email" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="150dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="150dp" />
 
     <Button
         android:id="@+id/cu_create"
         android:layout_width="340dp"
         android:layout_height="83dp"
         android:background="@drawable/cu_create"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="96dp"
-        app:layout_constraintTop_toTopOf="@+id/guideline17"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.938"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/ac_tx_repword"
+        app:layout_constraintVertical_bias="0.26"
+        app:layout_constraintRight_toLeftOf="@+id/cu_cancel" />
 
     <Button
         android:id="@+id/cu_cancel"
         android:layout_width="340dp"
         android:layout_height="83dp"
         android:background="@drawable/cu_cancel"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/cu_create"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.802"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cu_create" />
 
     <ImageButton
-        android:id="@+id/ac_info"
+        android:id="@+id/imageButton7"
         android:layout_width="55dp"
         android:layout_height="52dp"
         app:srcCompat="@android:drawable/ic_menu_info_details"
@@ -108,11 +109,11 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="38dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="38dp" />
+        android:layout_marginEnd="38dp"  />
 
 
     <ImageButton
-        android:id="@+id/ac_sett"
+        android:id="@+id/settings_button"
         android:layout_width="54dp"
         android:layout_height="59dp"
         android:adjustViewBounds="false"
@@ -123,24 +124,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="39dp" />
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline10"
-        app:layout_constraintGuide_begin="245dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="245dp"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline11"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="20dp" />
-
     <TextView
         android:id="@+id/ac_tv_repword"
         android:layout_width="305dp"
@@ -148,9 +131,10 @@
         android:text="Re-enter Password:"
         android:textColor="@android:color/white"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/cu_create"
-        app:layout_constraintTop_toBottomOf="@+id/ac_tv_pword"
-        app:layout_constraintRight_toRightOf="@+id/ac_tv_pword" />
+        tools:layout_editor_absoluteY="397dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="16dp" />
 
     <TextView
         android:id="@+id/ac_tv_email"
@@ -159,9 +143,10 @@
         android:text="Email:"
         android:textColor="@android:color/white"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/ac_tv_pword"
-        app:layout_constraintTop_toBottomOf="@+id/ac_tv_username"
-        app:layout_constraintRight_toRightOf="@+id/ac_tv_username" />
+        tools:layout_editor_absoluteY="259dp"
+        android:layout_marginLeft="218dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="218dp" />
 
     <TextView
         android:id="@+id/ac_tv_username"
@@ -170,11 +155,10 @@
         android:text="Username:"
         android:textColor="@android:color/white"
         android:textSize="35dp"
+        tools:layout_editor_absoluteY="189dp"
+        android:layout_marginLeft="142dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintBottom_toTopOf="@+id/ac_tv_email"
-        app:layout_constraintTop_toBottomOf="@+id/ac_pleasecomplete" />
+        android:layout_marginStart="142dp" />
 
     <EditText
         android:id="@+id/ac_tx_uname"
@@ -184,11 +168,12 @@
          android:backgroundTint="@android:color/white"
         android:ems="10"
         android:textColor="@android:color/white"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="266dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_username"
         android:layout_marginEnd="332dp"
-        android:layout_marginBottom="-5dp" />
+        android:layout_marginRight="332dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/ac_tv_username"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_username" />
 
     <TextView
         android:id="@+id/ac_pleasecomplete"
@@ -197,10 +182,13 @@
         android:text="Please complete the following information to create a user."
         android:textColor="@android:color/white"
         android:textSize="35dp"
+        tools:layout_editor_absoluteY="107dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="107dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/ac_createuser"
@@ -209,75 +197,16 @@
         android:text="CREATE USER"
         android:textColor="@android:color/white"
         android:textSize="45dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="8dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline5"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="20dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline12"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="20dp"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline13"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="20dp"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline14"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="20dp"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline15"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="20dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline16"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="20dp" />
-
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline17"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="20dp"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/ac_pleasecomplete"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginStart="8dp" />
 
 </android.support.constraint.ConstraintLayout>

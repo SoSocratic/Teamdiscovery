@@ -21,10 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Create_user"
-                  android:parentActivityName=".System">
-
+        <activity android:name=".Create_user">
         </activity>
+        <activity android:name=".LoginPage"
+            android:parentActivityName=".System">
+        </activity>
+        <activity android:name=".SuccessLogin"
+            android:parentActivityName=".LoginPage">
+        </activity>
+
     </application>
 
 </manifest>

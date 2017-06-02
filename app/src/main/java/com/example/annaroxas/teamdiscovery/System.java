@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class System extends AppCompatActivity {
-
+    public static final String EXTRA_MESSAGE = "Suck a dick dumbshit";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,9 +15,19 @@ public class System extends AppCompatActivity {
 =======
     }
 
-    public void startActivity(View view){
+    public void createUser(View view){
         Intent createNewUser = new Intent(this, Create_user.class);
         startActivity(createNewUser);
 >>>>>>> master
+    }
+
+    public void startLogin(View view) {
+        Intent logInUser = new Intent(this, LoginPage.class);
+        startActivity(logInUser);
+    }
+
+    public void logInSuccess(View view){
+        Intent loggedIn = new Intent(this, SuccessLogin.class);
+        startActivity(loggedIn);
     }
 }
