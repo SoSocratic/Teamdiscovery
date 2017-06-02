@@ -18,14 +18,9 @@
         android:textColorHint="@android:color/white"
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/white"
-        app:layout_constraintLeft_toRightOf="@+id/ac_tv_email"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.021"
-        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintBottom_toBottomOf="@+id/ac_tv_email"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_uname" />
 
     <EditText
         android:id="@+id/ac_tx_repword"
@@ -37,14 +32,9 @@
         android:textColorHint="@android:color/white"
         android:ems="10"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteY="397dp"
-        app:layout_constraintLeft_toRightOf="@+id/ac_tv_repword"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.009"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_repword"
+        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_pword" />
 
     <EditText
         android:id="@+id/ac_tx_pword"
@@ -57,14 +47,9 @@
         android:textColor="@android:color/white"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="@+id/ac_tv_pword"
-        app:layout_constraintLeft_toRightOf="@+id/ac_tv_pword"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintVertical_bias="0.499"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_email" />
 
     <TextView
         android:id="@+id/ac_tv_pword"
@@ -87,17 +72,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ac_tx_repword"
-        app:layout_constraintVertical_bias="0.26"
-        app:layout_constraintRight_toLeftOf="@+id/cu_cancel" />
-
-    <Button
-        android:id="@+id/cu_cancel"
-        android:layout_width="340dp"
-        android:layout_height="83dp"
-        android:background="@drawable/cu_cancel"
-        app:layout_constraintLeft_toRightOf="@+id/cu_create"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/cu_create" />
+        app:layout_constraintVertical_bias="0.296"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton7"
@@ -131,10 +107,11 @@
         android:text="Re-enter Password:"
         android:textColor="@android:color/white"
         android:textSize="35dp"
-        tools:layout_editor_absoluteY="397dp"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="256dp" />
 
     <TextView
         android:id="@+id/ac_tv_email"
@@ -143,10 +120,11 @@
         android:text="Email:"
         android:textColor="@android:color/white"
         android:textSize="35dp"
-        tools:layout_editor_absoluteY="259dp"
         android:layout_marginLeft="218dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="218dp" />
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="253dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/ac_tv_username"
@@ -155,10 +133,11 @@
         android:text="Username:"
         android:textColor="@android:color/white"
         android:textSize="35dp"
-        tools:layout_editor_absoluteY="189dp"
-        android:layout_marginLeft="142dp"
+        android:layout_marginLeft="150dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="142dp" />
+        android:layout_marginStart="142dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="190dp" />
 
     <EditText
         android:id="@+id/ac_tx_uname"
@@ -182,20 +161,21 @@
         android:text="Please complete the following information to create a user."
         android:textColor="@android:color/white"
         android:textSize="35dp"
-        tools:layout_editor_absoluteY="107dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="90dp" />
 
     <TextView
         android:id="@+id/ac_createuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CREATE USER"
-        android:textColor="@android:color/white"
+        android:textColor="#3D468F"
         android:textSize="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -206,7 +186,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/ac_pleasecomplete"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginStart="8dp" />
+        app:layout_constraintVertical_bias="0.666"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontal_bias="0.524" />
 
 </android.support.constraint.ConstraintLayout>
