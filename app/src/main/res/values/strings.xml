@@ -2,4 +2,15 @@
     <string name="app_name">Team discovery</string>*//
     <string name="Username">Username</string>*//
     <string name="Password">Password</string>*//
+
+    <string name="intro">Move things around.</string>*//
+    <string name="option_1">A</string>
+    <string name="option_2">B</string>
+    <string name="option_3">C</string>
+
+    <string name="choice_1">Top</string>
+    <string name="choice_2">-</string>
+    <string name="choice_3">Bottom</string>
+    <string name="title_activity_test_xml">testXML</string>
+
 </resources>

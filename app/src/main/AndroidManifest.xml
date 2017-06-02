@@ -21,10 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Create_user"
-                  android:parentActivityName=".System">
-
-        </activity>
+        <activity
+            android:name=".Create_user"
+            android:parentActivityName=".System" />
+        <activity android:name=".TestGame" />
+        <activity
+            android:name=".testXML"
+            android:label="@string/title_activity_test_xml"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
