@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_plain"
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <EditText
+        android:id="@+id/anc_tx_childname"
+        android:layout_width="415dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:hint="Child's Name"
+        android:textSize="35dp"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/anc_chanme"
+        app:layout_constraintLeft_toRightOf="@+id/anc_chanme"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="-3dp" />
+
+    <Button
+        android:id="@+id/anc_bttn_create"
+        android:layout_width="340dp"
+        android:layout_height="83dp"
+        android:background="@drawable/create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="77dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.21"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/anc_tx_completeinfo"
+        android:layout_width="939dp"
+        android:layout_height="48dp"
+        android:text="Please complete the following information to create new child profile."
+        android:textColor="#FFFF"
+        android:textSize="30dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="109dp"
+        app:layout_constraintHorizontal_bias="0.507"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/anc_tx_addnewchild"
+        android:layout_width="572dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="33dp"
+        android:text="ADD NEW CHILD PROFILE"
+        android:textColor="#3D468F"
+        android:textSize="45dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <ImageButton
+        android:id="@+id/anc_info"
+        android:layout_width="55dp"
+        android:layout_height="52dp"
+        app:srcCompat="@android:drawable/ic_menu_info_details"
+        android:background="@drawable/about"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="38dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="38dp" />
+
+
+    <ImageButton
+        android:id="@+id/anc_sett"
+        android:layout_width="54dp"
+        android:layout_height="59dp"
+        android:adjustViewBounds="false"
+        android:background="@drawable/settings"
+        android:layout_marginRight="39dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="39dp" />
+
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline18"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="20dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageButton
+        android:id="@+id/anc_add_avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/addavatar"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:background="AAD8D0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="179dp" />
+
+    <TextView
+        android:id="@+id/anc_tv_chid"
+        android:layout_width="125dp"
+        android:layout_height="45dp"
+        android:text="ChildID:"
+        android:textSize="35dp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="225dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="225dp"
+        app:layout_constraintBottom_toBottomOf="@+id/anc_tx_chid"
+        android:layout_marginBottom="0dp" />
+
+    <TextView
+        android:id="@+id/anc_parent_educator"
+        android:layout_width="270dp"
+        android:layout_height="45dp"
+        android:text="Parent/Educator:"
+        android:textSize="35dp"
+        android:textColor="@android:color/white"
+        tools:layout_editor_absoluteY="278dp"
+        android:layout_marginLeft="80dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="80dp" />
+
+    <TextView
+        android:id="@+id/anc_chanme"
+        android:layout_width="196dp"
+        android:layout_height="52dp"
+        android:text="Child Name:"
+        android:textSize="35dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="156dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="156dp"
+        app:layout_constraintVertical_bias="0.542"
+        tools:layout_editor_absoluteY="345dp"
+        tools:layout_editor_absoluteX="156dp" />
+
+    <TextView
+        android:id="@+id/anc_tx_educator"
+        android:layout_width="413dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:textSize="35dp"
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:inputType="textPersonName"
+        android:hint="Parent/Educator Name"
+        app:layout_constraintLeft_toRightOf="@+id/anc_parent_educator"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.008"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/anc_parent_educator"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="0dp" />
+
+
+    <TextView
+        android:id="@+id/anc_tx_chid"
+        android:layout_width="389dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:textSize="35dp"
+        android:text="Child's ID"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:hint=""
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toRightOf="@+id/anc_tv_chid"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="220dp"
+        app:layout_constraintHorizontal_bias="0.007"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+</android.support.constraint.ConstraintLayout>

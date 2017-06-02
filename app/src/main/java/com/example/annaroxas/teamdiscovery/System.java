@@ -11,11 +11,14 @@ public class System extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_system_linear);
+<<<<<<< HEAD
+=======
     }
 
     public void createUser(View view){
         Intent createNewUser = new Intent(this, Create_user.class);
         startActivity(createNewUser);
+>>>>>>> master
     }
 
     public void startLogin(View view) {
