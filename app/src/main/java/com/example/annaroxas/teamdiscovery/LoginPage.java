@@ -42,7 +42,7 @@ public class LoginPage extends AppCompatActivity {
         // Capture button clicks
         login_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                if(nameText.getText().toString().length() > 0 &&
+                if(nameText.getText().toString().length() > 0 ||
                         passText.getText().toString().length() > 0){
             /*
         * CODE TO COMPARE entered text to stored XML values
