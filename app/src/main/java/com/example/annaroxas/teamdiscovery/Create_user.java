@@ -18,7 +18,7 @@ public class Create_user extends AppCompatActivity {
     private static final String TAG = LoginPage.class.getSimpleName();
     private static Button button_confirm;
     EditText passText, nameText, confirmText, emailText;
-    private static final String message = "Please re-enter your password and try again.",
+    private static final String message = "Please re-enter your  and try again.",
             button_label = "Ok", title = "Passwords Mismatch.";
 
     @Override
