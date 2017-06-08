@@ -27,17 +27,17 @@ public class Create_user extends AppCompatActivity {
         setContentView(R.layout.activity_create_user);
 
         //Grab the reference of EditText fields
-        passText = (EditText) findViewById(R.id.edit_text_pass);
-        nameText = (EditText) findViewById(R.id.edit_text_user);
-        confirmText = (EditText) findViewById(R.id.edit_text_confirm);
-        emailText = (EditText) findViewById(R.id.edit_text_email);
+        passText = (EditText) findViewById(R.id.ac_tx_pword);
+        nameText = (EditText) findViewById(R.id.ac_tx_uname);
+        confirmText = (EditText) findViewById(R.id.ac_tx_repword);
+        emailText = (EditText) findViewById(R.id.ac_tx_email);
 
         //Add text watcher to the EditText fields
         passText.addTextChangedListener(checkEditorText);
         nameText.addTextChangedListener(checkEditorText);
         confirmText.addTextChangedListener(checkEditorText);
         emailText.addTextChangedListener(checkEditorText);
-        button_confirm = (Button) findViewById(R.id.confirm_button);
+        button_confirm = (Button) findViewById(R.id.cu_create);
 
         // Capture button clicks
         button_confirm.setOnClickListener(new View.OnClickListener() {
