@@ -10,6 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.lang.String;
+
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 
 /**
  * Created by annaroxas on 2017-05-04.
@@ -27,6 +32,7 @@ public class LoginPage extends AppCompatActivity {
         if (savedInstanceState == null) {
             Log.d(TAG, "savedInstanceState DALE fucked right up");
         }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         //Grab the reference of EditText fields
@@ -72,6 +78,20 @@ public class LoginPage extends AppCompatActivity {
         });
 
 
+    }
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, TestGame.class);
+        startActivity(intent);
+    }
+
+    public void onClick(View view)throws IOException, XmlPullParserException {
+        String userName = nameText.getText().toString();
+        String pass = passText.getText().toString();
+        String successTest = XMLRead.XMLParse(getApplicationContext().getResources().getXml(R.xml.auth), userName, pass);
+        if(successTest == "Success!"){
+            Intent intent = new Intent(this, SuccessLogin.class);
+            startActivity(intent);
+        }
     }
 
 

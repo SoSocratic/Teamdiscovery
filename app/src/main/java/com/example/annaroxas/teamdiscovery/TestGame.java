@@ -44,6 +44,7 @@ public class TestGame extends AppCompatActivity {
 
     }
 
+
     private final class ChoiceTouchListener implements OnTouchListener {
 
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -93,6 +94,18 @@ public class TestGame extends AppCompatActivity {
                     dropTarget.setText(dropped.getText());
                     //make it bold to highlight the fact that an item has been dropped
                     dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
+                    //if an item has already been dropped here, there will be a tag
+                    Object tag = dropTarget.getTag();
+                    //if there is already an item here, set it back visible in its original place
+                    if(tag!=null)
+                    {
+                        //the tag is the view id already dropped here
+                        int existingID = (Integer)tag;
+                        //set the original view visible again
+                        findViewById(existingID).setVisibility(View.VISIBLE);
+                    }
+                    //set the tag in the target view to the ID of the view being dropped
+                    dropTarget.setTag(dropped.getId());
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     //no action necessary

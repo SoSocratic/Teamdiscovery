@@ -4,6 +4,7 @@ package com.example.annaroxas.teamdiscovery;
  * Created by Kenit on 5/26/2017.
  */
 
+import android.app.Application;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 
@@ -12,16 +13,26 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-public class XMLRead{
+public class XMLRead extends Application{
+    private static Context mContext;
 
-public String XMLParse(Context context) throws IOException, XmlPullParserException {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mContext = this;
+    }
+
+    public static Context getmContext() {
+        return mContext;
+    }
+
+
+public static String XMLParse(android.content.res.XmlResourceParser resParser, String nameText, String passText) throws IOException, XmlPullParserException {
     // Create ResourceParser for XML file
-    XmlResourceParser xpp = context.getResources().getXml(R.xml.auth);
+    XmlResourceParser xpp = resParser;
 
     // check state
     int eventType = xpp.getEventType();
-    String content = "test123";
-    String str = "admin";
     Boolean passCorrect = false;
     Boolean userCorrect = false;
 
@@ -30,18 +41,18 @@ public String XMLParse(Context context) throws IOException, XmlPullParserExcepti
         // you should custom parse your xml
         if(eventType == XmlPullParser.START_TAG) {
             //check content against entered values
-            if(content == xpp.getName()){
+            if(passText == xpp.getName()){
                 Boolean passSuccess = true;
             }
             else if("name" == xpp.getName()){
                 Boolean onUser = true;
             }
 
-            //System.out.println("Start tag "+xpp.getName());
-            content = xpp.getName();
         } else if(eventType == XmlPullParser.TEXT) {
-            str = (xpp.getText());
-            userCorrect = true;
+            if (nameText == xpp.getText()){
+                userCorrect = true;
+            }
+
         }
         if(userCorrect == true && passCorrect == true){
             xpp.close();

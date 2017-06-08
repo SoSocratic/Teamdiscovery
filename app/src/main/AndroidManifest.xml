@@ -29,6 +29,7 @@
             android:name=".testXML"
             android:label="@string/title_activity_test_xml"
             android:theme="@style/AppTheme"></activity>
+        <activity android:name=".SuccessLogin" />
     </application>
 
 </manifest>
