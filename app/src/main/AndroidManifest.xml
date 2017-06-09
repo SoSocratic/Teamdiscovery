@@ -31,9 +31,6 @@
             android:name=".testXML"
             android:label="@string/title_activity_test_xml"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".SuccessLogin" />
-        <activity android:name=".Create_user">
-        </activity>
         <activity android:name=".LoginPage"
             android:parentActivityName=".System">
         </activity>

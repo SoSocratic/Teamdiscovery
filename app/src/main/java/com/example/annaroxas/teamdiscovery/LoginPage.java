@@ -44,15 +44,32 @@ public class LoginPage extends AppCompatActivity {
         nameText.addTextChangedListener(checkEditorText);
         login_button = (Button) findViewById(R.id.loginpage_login_button);
         create_user_button = (Button) findViewById(R.id.create_new_user_button);
-
+        //declare login button intent
+        final Intent loginAuthTest = new Intent(this, SuccessLogin.class);
         // Capture button clicks
         login_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 if(nameText.getText().toString().length() > 0 &&
                         passText.getText().toString().length() > 0){
-            /*
-        * CODE TO COMPARE entered text to stored XML values
-        * */
+                    //get the username
+                    String userName = nameText.getText().toString();
+                    //get the password
+                    String pass = passText.getText().toString();
+                    //test the user/pass with the auth file
+                    String successTest = null;
+                    try {
+                        successTest = XMLRead.XMLParse(getApplicationContext().getResources().getXml(R.xml.auth), userName, pass);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    }
+                    //if login is successful start up the loginSuccess page, otherwise do nothing
+                    if(successTest == "Success!"){
+                        startActivity(loginAuthTest);
+                    } else{
+                        nameText.setText("Failed");
+                    }
 
                 } else {
                     FragmentManager fm = getFragmentManager();
@@ -79,22 +96,6 @@ public class LoginPage extends AppCompatActivity {
 
 
     }
-
-    //Buttoin on click for testing if login credentials are correct
-    public void onClick(View view)throws IOException, XmlPullParserException {
-        //get the username
-        String userName = nameText.getText().toString();
-        //get the password
-        String pass = passText.getText().toString();
-        //test the user/pass with the auth file
-        String successTest = XMLRead.XMLParse(getApplicationContext().getResources().getXml(R.xml.auth), userName, pass);
-        //if login is successful start up the loginSuccess page, otherwise do nothing
-        if(successTest == "Success!"){
-            Intent intent = new Intent(this, SuccessLogin.class);
-            startActivity(intent);
-        }
-    }
-
 
     private final TextWatcher checkEditorText = new TextWatcher() {
         @Override
