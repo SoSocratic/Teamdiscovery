@@ -12,5 +12,7 @@
     <string name="choice_2">-</string>
     <string name="choice_3">Bottom</string>
     <string name="title_activity_test_xml">testXML</string>
-
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="seek_to">Jump To</string>
+    <string name="seek_to_hint">Seconds</string>
 </resources>
