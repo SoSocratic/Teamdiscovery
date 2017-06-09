@@ -79,15 +79,16 @@ public class LoginPage extends AppCompatActivity {
 
 
     }
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, TestGame.class);
-        startActivity(intent);
-    }
 
+    //Buttoin on click for testing if login credentials are correct
     public void onClick(View view)throws IOException, XmlPullParserException {
+        //get the username
         String userName = nameText.getText().toString();
+        //get the password
         String pass = passText.getText().toString();
+        //test the user/pass with the auth file
         String successTest = XMLRead.XMLParse(getApplicationContext().getResources().getXml(R.xml.auth), userName, pass);
+        //if login is successful start up the loginSuccess page, otherwise do nothing
         if(successTest == "Success!"){
             Intent intent = new Intent(this, SuccessLogin.class);
             startActivity(intent);
