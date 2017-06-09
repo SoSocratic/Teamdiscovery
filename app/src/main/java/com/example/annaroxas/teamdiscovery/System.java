@@ -27,4 +27,9 @@ public class System extends AppCompatActivity {
         Intent loggedIn = new Intent(this, SuccessLogin.class);
         startActivity(loggedIn);
     }
+
+    public void displayReward(View view){
+        Intent showReward = new Intent(this, PresentReward.class);
+        startActivity(showReward);
+    }
 }
