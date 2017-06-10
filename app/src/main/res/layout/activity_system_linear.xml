@@ -81,7 +81,7 @@
         android:layout_height="93dp"
         android:layout_marginTop="541dp"
         android:background="@drawable/createuser"
-        android:onClick="createUser"
+        android:onClick="displayReward"
         android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintLeft_toLeftOf="parent"

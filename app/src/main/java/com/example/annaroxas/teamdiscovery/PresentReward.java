@@ -5,7 +5,13 @@ package com.example.annaroxas.teamdiscovery;
  */
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -14,10 +20,15 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 public class PresentReward extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     private static final int RECOVERY_REQUEST = 1;
     private YouTubePlayerView youTubeView;
+    private YouTubePlayer player;
+    private boolean fullscreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +39,24 @@ public class PresentReward extends YouTubeBaseActivity implements YouTubePlayer.
         youTubeView.initialize(YouTConf.YOUTUBE_API_KEY, this);
     }
 
+
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
+        this.player = player;
+
+        //Set player to fullscreen and disable the controls
+        player.setFullscreen(!fullscreen);
+        player.setPlayerStyle(YouTubePlayer.PlayerStyle.CHROMELESS);
+
+        //Force the app into landscape mode when fullscreen is active if not already in landscape
+        player.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION);
+
+        //When in landscape the video will be in fullscreen
+        player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_ALWAYS_FULLSCREEN_IN_LANDSCAPE);
+
         if (!wasRestored) {
             // Plays https://www.youtube.com/watch?v=hNfDNORPU4Y    BORKFRICA!
-            player.cueVideo("hNfDNORPU4Y"); // BORK BORK BORK BORK
+            player.loadVideo("hNfDNORPU4Y"); // BORK BORK BORK BORK
         }
     }
 
