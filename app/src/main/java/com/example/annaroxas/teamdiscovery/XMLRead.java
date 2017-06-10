@@ -13,50 +13,58 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-public class XMLRead extends Application{
+public class XMLRead extends Application {
 
 
-public static String XMLParse(android.content.res.XmlResourceParser resParser, String nameText, String passText) throws IOException, XmlPullParserException {
-    // Create ResourceParser for XML file
-    XmlResourceParser xpp = resParser;
+    public static String XMLAuthParse(android.content.res.XmlResourceParser resParser, String nameText, String passText) throws IOException, XmlPullParserException {
 
-    // check state
-    int eventType = xpp.getEventType();
-    Boolean passCorrect = false;
-    Boolean userCorrect = false;
+        Boolean passCorrect = false;
+        Boolean userCorrect = false;
+        String text = "";
+        try {
+            // Create ResourceParser for XML file
+            XmlResourceParser xpp = resParser;
 
-    while (eventType != XmlPullParser.END_DOCUMENT) {
-        // instead of the following if/else if lines
-        // you should custom parse your xml
-        if(eventType == XmlPullParser.START_TAG) {
-            //check content against entered values
-            if(passText == xpp.getName()){
-                Boolean passSuccess = true;
-                return "pass correct";
+            // check state
+            int eventType = xpp.getEventType();
+
+
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                String tagname = xpp.getName();
+                switch (eventType) {
+                    case XmlPullParser.START_TAG:
+                        if (tagname.equalsIgnoreCase(passText)) {
+                            passCorrect = true;
+                        }
+                        break;
+                    case XmlPullParser.TEXT:
+                        text = xpp.getText();
+                        break;
+                    case XmlPullParser.END_TAG:
+                        if (tagname.equalsIgnoreCase("name")) {
+                            // collect and test username
+                            if (text.equals(nameText)) {
+                                userCorrect = true;
+                            }
+                        } else if (tagname.equalsIgnoreCase(passText)) {
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+                eventType = xpp.next();
             }
-            else if("name" == xpp.getName()){
-                Boolean onUser = true;
-                return "on user";
-            }
 
-        } else if(eventType == XmlPullParser.TEXT) {
-            if (nameText == xpp.getText()){
-                userCorrect = true;
-                return "Got user";
-            }
-
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        if(userCorrect == true && passCorrect == true){
-            xpp.close();
+        if(userCorrect && passCorrect) {
             return "Success!";
         }
-        //move onto the next part in XML doc
-        eventType = xpp.next();
-    }
-
-
-    // indicate app done reading the resource.
-    xpp.close();
-    return "fail";
+        return "failed";
     }
 }

@@ -58,7 +58,7 @@ public class LoginPage extends AppCompatActivity {
                     //test the user/pass with the auth file
                     String successTest = null;
                     try {
-                        successTest = XMLRead.XMLParse(getApplicationContext().getResources().getXml(R.xml.auth), userName, pass);
+                        successTest = XMLRead.XMLAuthParse(getApplicationContext().getResources().getXml(R.xml.auth), userName, pass);
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (XmlPullParserException e) {
@@ -67,8 +67,6 @@ public class LoginPage extends AppCompatActivity {
                     //if login is successful start up the loginSuccess page, otherwise do nothing
                     if(successTest == "Success!"){
                         startActivity(loginAuthTest);
-                    } else{
-                        nameText.setText("Failed");
                     }
 
                 } else {

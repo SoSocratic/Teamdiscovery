@@ -27,10 +27,7 @@
             android:name=".Create_user"
             android:parentActivityName=".System" />
         <activity android:name=".TestGame" />
-        <activity
-            android:name=".testXML"
-            android:label="@string/title_activity_test_xml"
-            android:theme="@style/AppTheme"></activity>
+
         <activity android:name=".LoginPage"
             android:parentActivityName=".System">
         </activity>
