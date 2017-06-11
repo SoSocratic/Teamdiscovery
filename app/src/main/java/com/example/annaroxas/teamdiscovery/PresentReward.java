@@ -23,7 +23,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
-public class PresentReward extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+public class PresentReward extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, YouTubePlayer.PlayerStateChangeListener {
 
     private static final int RECOVERY_REQUEST = 1;
     private YouTubePlayerView youTubeView;
@@ -42,7 +42,12 @@ public class PresentReward extends YouTubeBaseActivity implements YouTubePlayer.
 
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
+
+        //Initialize the player
         this.player = player;
+
+        //Initialize the listener to monitor changes in the video playback state
+        player.setPlayerStateChangeListener(this);
 
         //Set player to fullscreen and disable the controls
         player.setFullscreen(!fullscreen);
@@ -80,5 +85,42 @@ public class PresentReward extends YouTubeBaseActivity implements YouTubePlayer.
 
     protected Provider getYouTubePlayerProvider() {
         return youTubeView;
+    }
+
+    @Override
+    public void onLoading() {
+
+    }
+
+    @Override
+    public void onLoaded(String s) {
+
+    }
+
+    @Override
+    public void onAdStarted() {
+
+    }
+
+    @Override
+    public void onVideoStarted() {
+
+    }
+
+    @Override
+    public void onVideoEnded() {
+        //THIS NEEDS TO BE CHANGED! IT SHOULD NOT GO TO CREATE USER ACTIVITY UPON
+        //COMPLETION
+        Intent create_user = new Intent(getApplicationContext(),Create_user.class);
+
+        //Bring existing activity instance to the foreground if it exists or create a
+        // new one if it does not exist
+        create_user.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(create_user);
+    }
+
+    @Override
+    public void onError(YouTubePlayer.ErrorReason errorReason) {
+
     }
 }
