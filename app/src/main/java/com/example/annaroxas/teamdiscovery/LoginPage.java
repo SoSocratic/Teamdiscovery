@@ -44,8 +44,7 @@ public class LoginPage extends AppCompatActivity {
         nameText.addTextChangedListener(checkEditorText);
         login_button = (Button) findViewById(R.id.loginpage_login_button);
         create_user_button = (Button) findViewById(R.id.create_new_user_button);
-        //declare login button intent
-        final Intent loginAuthTest = new Intent(this, SuccessLogin.class);
+
         // Capture button clicks
         login_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
@@ -66,6 +65,8 @@ public class LoginPage extends AppCompatActivity {
                     }
                     //if login is successful start up the loginSuccess page, otherwise do nothing
                     if(successTest == "Success!"){
+                        //declare login button intent
+                        Intent loginAuthTest = new Intent(getApplicationContext(), SuccessLogin.class);
                         startActivity(loginAuthTest);
                     }
 
