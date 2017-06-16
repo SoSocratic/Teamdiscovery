@@ -1,0 +1,12 @@
+<shadows>
+	<test123>
+		<name>admin</name>
+		<user>child1</user>
+	</test123>
+	<test1234>
+		<name>administrator</name>
+		<user>child2</user>
+		<user>child3</user>
+		<user>child4</user>
+	</test1234>
+</shadows>

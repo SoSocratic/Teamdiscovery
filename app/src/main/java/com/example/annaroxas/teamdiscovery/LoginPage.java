@@ -10,6 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.lang.String;
+
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 
 /**
  * Created by annaroxas on 2017-05-04.
@@ -27,6 +32,7 @@ public class LoginPage extends AppCompatActivity {
         if (savedInstanceState == null) {
             Log.d(TAG, "savedInstanceState DALE fucked right up");
         }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         //Grab the reference of EditText fields
@@ -44,9 +50,25 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View arg0) {
                 if(nameText.getText().toString().length() > 0 &&
                         passText.getText().toString().length() > 0){
-            /*
-        * CODE TO COMPARE entered text to stored XML values
-        * */
+                    //get the username
+                    String userName = nameText.getText().toString();
+                    //get the password
+                    String pass = passText.getText().toString();
+                    //test the user/pass with the auth file
+                    String successTest = null;
+                    try {
+                        successTest = XMLRead.XMLAuthParse(getApplicationContext().getResources().getXml(R.xml.auth), userName, pass);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (XmlPullParserException e) {
+                        e.printStackTrace();
+                    }
+                    //if login is successful start up the loginSuccess page, otherwise do nothing
+                    if(successTest == "Success!"){
+                        //declare login button intent
+                        Intent loginAuthTest = new Intent(getApplicationContext(), SuccessLogin.class);
+                        startActivity(loginAuthTest);
+                    }
 
                 } else {
                     FragmentManager fm = getFragmentManager();
@@ -73,7 +95,6 @@ public class LoginPage extends AppCompatActivity {
 
 
     }
-
 
     private final TextWatcher checkEditorText = new TextWatcher() {
         @Override
