@@ -20,17 +20,17 @@ public class TestGame extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_test_game);
+        setContentView(R.layout.activity_test_game);
 
         //views to drag
-       // option1 = (TextView)findViewById(R.id.option_1);
-       // option2 = (TextView)findViewById(R.id.option_2);
-       // option3 = (TextView)findViewById(R.id.option_3);
+        option1 = (TextView)findViewById(R.id.option_1);
+        option2 = (TextView)findViewById(R.id.option_2);
+        option3 = (TextView)findViewById(R.id.option_3);
 
         //views to drop onto
-       // choice1 = (TextView)findViewById(R.id.choice_1);
-       // choice2 = (TextView)findViewById(R.id.choice_2);
-       // choice3 = (TextView)findViewById(R.id.choice_3);
+        choice1 = (TextView)findViewById(R.id.choice_1);
+        choice2 = (TextView)findViewById(R.id.choice_2);
+        choice3 = (TextView)findViewById(R.id.choice_3);
 
         //set touch listeners
         option1.setOnTouchListener(new ChoiceTouchListener());

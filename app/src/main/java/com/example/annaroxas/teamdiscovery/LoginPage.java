@@ -84,12 +84,12 @@ public class LoginPage extends AppCompatActivity {
         // Capture button clicks
         create_user_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                Intent create_user = new Intent(getApplicationContext(),Create_user.class);
+                Intent testgame = new Intent(getApplicationContext(),TestGame.class);
 
                 //Bring existing activity instance to the foreground if it exists or create a
                 // new one if it does not exist
-                create_user.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(create_user);
+                testgame.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(testgame);
             }
         });
 
