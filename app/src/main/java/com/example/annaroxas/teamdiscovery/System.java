@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 public class System extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "Suck a dick dumbshit";
@@ -11,6 +15,36 @@ public class System extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_system_linear);
+        initImages();
+    }
+
+    private void initImages(){
+        ImageView logo_view = (ImageView) findViewById(R.id.logo_view);
+        Glide.with(this)
+                .load(R.drawable.logo)
+                .into(logo_view);
+
+        ImageView title_view = (ImageView) findViewById(R.id.title_view);
+        Glide.with(this)
+                .load(R.drawable.llrp_name_whole)
+                .into(title_view);
+
+        ImageView llrp_view = (ImageView) findViewById(R.id.as_llrp);
+        Glide.with(this)
+                .load(R.drawable.llrp_name)
+                .into(llrp_view);
+
+        ImageView logo = (ImageView) findViewById(R.id.logo_view);
+        Glide.with(this)
+                .load(R.drawable.logo)
+                .into(logo);
+
+        ImageButton setting_button = (ImageButton) findViewById(R.id.settings_button);
+        Glide.with(this)
+                .load(R.drawable.settings)
+                .into(setting_button);
+
+
     }
 
     public void createUser(View view){
@@ -31,5 +65,10 @@ public class System extends AppCompatActivity {
     public void displayReward(View view){
         Intent showReward = new Intent(this, PresentReward.class);
         startActivity(showReward);
+    }
+
+    public void displayTest(View view){
+        Intent showTest = new Intent(this, SuccessLogin.class);
+        startActivity(showTest);
     }
 }

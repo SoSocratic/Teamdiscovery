@@ -6,56 +6,53 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_plain">
 
-    <Button
+    <ImageButton
         android:id="@+id/cc_add_child"
         android:layout_width="340dp"
         android:layout_height="83dp"
-        android:background="@drawable/cc_addnew"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="109dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/cc_ok"
         android:layout_width="340dp"
         android:layout_height="83dp"
-        android:background="@drawable/cc_ok"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.83"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83" />
 
-    <Button
+    <ImageButton
         android:id="@+id/cc_logout"
         android:layout_width="173dp"
         android:layout_height="55dp"
-        android:background="@drawable/cc_logout"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.896"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.987"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.987" />
 
     <TextView
         android:id="@+id/cc_tv_welcome"
@@ -117,7 +114,6 @@
         android:layout_width="54dp"
         android:layout_height="59dp"
         android:adjustViewBounds="false"
-        android:background="@drawable/settings"
         android:layout_marginRight="39dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -131,7 +127,6 @@
         android:id="@+id/cc_child_avtr"
         android:layout_width="266dp"
         android:layout_height="266dp"
-        app:srcCompat="@drawable/boy"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/cc_radio_child"
