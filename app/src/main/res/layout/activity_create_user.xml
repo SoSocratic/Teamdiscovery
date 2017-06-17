@@ -10,59 +10,83 @@
     tools:layout_editor_absoluteX="0dp">
 
     <EditText
-        android:id="@+id/ac_tx_email"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint=""
-        android:textColorHint="@android:color/white"
+        android:id="@+id/ac_tx_uname"
+        android:layout_width="550dp"
+        android:hint="Username"
+        android:layout_height="80dp"
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/white"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_email"
-        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_uname" />
+        android:textColorHint="@color/colorAccent"
+        android:textSize="30dp"
+        android:ems="10"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="138dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <EditText
-        android:id="@+id/ac_tx_repword"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:hint=""
+        android:id="@+id/ac_tx_email"
+        android:layout_width="550dp"
+        android:layout_height="80dp"
+        android:hint="Email"
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/white"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="30dp"
         android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintHorizontal_bias="0.009"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_repword"
-        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_pword" />
+        android:inputType="textEmailAddress"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/ac_tx_uname"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
 
     <EditText
         android:id="@+id/ac_tx_pword"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
+        android:layout_width="550dp"
+        android:layout_height="80dp"
+        android:hint="Password"
+        android:textColor="@android:color/white"
         android:backgroundTint="@android:color/white"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="30dp"
         android:ems="10"
-        android:hint=""
-        android:textColor="@android:color/white"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_pword"
-        app:layout_constraintHorizontal_bias="0.021"
-        app:layout_constraintVertical_bias="0.499"
-        app:layout_constraintLeft_toLeftOf="@+id/ac_tx_email" />
-
-    <TextView
-        android:id="@+id/ac_tv_pword"
-        android:layout_width="167dp"
-        android:layout_height="45dp"
-        android:text="Password:"
-        android:textColor="@android:color/white"
-        android:textSize="35dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginLeft="150dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="150dp" />
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/ac_tx_email"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <EditText
+        android:id="@+id/ac_tx_repword"
+        android:layout_width="550dp"
+        android:layout_height="80dp"
+        android:hint="Re-enter Password"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="30dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ac_tx_pword"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/cu_create"
@@ -72,7 +96,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ac_tx_repword"
-        app:layout_constraintVertical_bias="0.296"
+        app:layout_constraintVertical_bias="0.158"
         app:layout_constraintRight_toRightOf="parent" />
 
     <ImageButton
@@ -99,60 +123,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="39dp" />
-
-    <TextView
-        android:id="@+id/ac_tv_repword"
-        android:layout_width="305dp"
-        android:layout_height="45dp"
-        android:text="Re-enter Password:"
-        android:textColor="@android:color/white"
-        android:textSize="35dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="256dp" />
-
-    <TextView
-        android:id="@+id/ac_tv_email"
-        android:layout_width="99dp"
-        android:layout_height="45dp"
-        android:text="Email:"
-        android:textColor="@android:color/white"
-        android:textSize="35dp"
-        android:layout_marginLeft="218dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="218dp"
-        android:layout_marginTop="253dp"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/ac_tv_username"
-        android:layout_width="175dp"
-        android:layout_height="45dp"
-        android:text="Username:"
-        android:textColor="@android:color/white"
-        android:textSize="35dp"
-        android:layout_marginLeft="150dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="142dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="190dp" />
-
-    <EditText
-        android:id="@+id/ac_tx_uname"
-        android:layout_width="360dp"
-        android:layout_height="50dp"
-        android:textColorHint="@android:color/white"
-         android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:textColor="@android:color/white"
-        android:layout_marginEnd="332dp"
-        android:layout_marginRight="332dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/ac_tv_username"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintBottom_toBottomOf="@+id/ac_tv_username" />
 
     <TextView
         android:id="@+id/ac_pleasecomplete"
@@ -189,5 +159,53 @@
         app:layout_constraintVertical_bias="0.666"
         android:layout_marginStart="8dp"
         app:layout_constraintHorizontal_bias="0.524" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/newpword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.112" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/newpword"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginTop="42dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/newemail"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/username2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="162dp"
+        android:layout_marginLeft="193dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/ac_tx_uname"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="193dp"
+        android:layout_marginEnd="8dp" />
 
 </android.support.constraint.ConstraintLayout>
