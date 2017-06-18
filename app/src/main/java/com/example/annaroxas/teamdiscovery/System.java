@@ -1,12 +1,12 @@
 package com.example.annaroxas.teamdiscovery;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
 
 public class System extends AppCompatActivity {
@@ -19,6 +19,7 @@ public class System extends AppCompatActivity {
     }
 
     private void initImages(){
+
         ImageView logo_view = (ImageView) findViewById(R.id.logo_view);
         Glide.with(this)
                 .load(R.drawable.logo)
@@ -43,6 +44,16 @@ public class System extends AppCompatActivity {
         Glide.with(this)
                 .load(R.drawable.settings)
                 .into(setting_button);
+
+        ImageButton login_button = (ImageButton) findViewById(R.id.login_button);
+        Glide.with(this)
+                .load(R.drawable.login)
+                .into(login_button);
+
+        ImageButton createuser_button = (ImageButton) findViewById(R.id.createuser_button);
+        Glide.with(this)
+                .load(R.drawable.createuser)
+                .into(createuser_button);
 
 
     }

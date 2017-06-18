@@ -56,12 +56,11 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1" />
 
-    <Button
+    <ImageButton
         android:id="@+id/login_button"
         android:layout_width="321dp"
         android:layout_height="95dp"
         android:layout_marginBottom="23dp"
-        android:background="@drawable/login"
         android:onClick="startLogin"
         app:layout_constraintBottom_toTopOf="@+id/createuser_button"
         app:layout_constraintHorizontal_bias="0.0"
@@ -71,12 +70,11 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1" />
 
-    <Button
+    <ImageButton
         android:id="@+id/createuser_button"
         android:layout_width="321dp"
         android:layout_height="93dp"
         android:layout_marginTop="541dp"
-        android:background="@drawable/createuser"
         android:onClick="displayTest"
         android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.517"
