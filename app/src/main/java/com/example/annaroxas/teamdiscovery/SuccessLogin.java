@@ -35,26 +35,31 @@ public class SuccessLogin extends AppCompatActivity {
         ImageButton setting_button = (ImageButton) findViewById(R.id.cc_sett);
         Glide.with(this)
                 .load(R.drawable.settings)
+                .fitCenter()
                 .into(setting_button);
 
         ImageButton info_button = (ImageButton) findViewById(R.id.cc_info);
         Glide.with(this)
                 .load(R.drawable.about)
+                .fitCenter()
                 .into(info_button);
 
         ImageButton addchild_button = (ImageButton) findViewById(R.id.cc_add_child);
         Glide.with(this)
                 .load(R.drawable.cc_addnew)
+                .fitCenter()
                 .into(addchild_button);
 
         ImageButton ok_button = (ImageButton) findViewById(R.id.cc_ok);
         Glide.with(this)
                 .load(R.drawable.cc_ok)
+                .fitCenter()
                 .into(ok_button);
 
         ImageButton logout_button = (ImageButton) findViewById(R.id.cc_logout);
         Glide.with(this)
                 .load(R.drawable.cc_logout)
+                .fitCenter()
                 .into(logout_button);
 
 

@@ -1,7 +1,6 @@
 package com.example.annaroxas.teamdiscovery;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 public class System extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "Suck a dick dumbshit";
+    public static final String EXTRA_MESSAGE = "Oooooopsss";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,19 +42,26 @@ public class System extends AppCompatActivity {
         ImageButton setting_button = (ImageButton) findViewById(R.id.settings_button);
         Glide.with(this)
                 .load(R.drawable.settings)
+                .fitCenter()
                 .into(setting_button);
 
         ImageButton login_button = (ImageButton) findViewById(R.id.login_button);
         Glide.with(this)
                 .load(R.drawable.login)
+                .fitCenter()
                 .into(login_button);
 
         ImageButton createuser_button = (ImageButton) findViewById(R.id.createuser_button);
         Glide.with(this)
                 .load(R.drawable.createuser)
+                .fitCenter()
                 .into(createuser_button);
 
-
+        ImageButton aboot_button = (ImageButton) findViewById(R.id.imageButton7); //Eh?
+        Glide.with(this)
+                .load(R.drawable.about)
+                .fitCenter()
+                .into(aboot_button); //Eh?
     }
 
     public void createUser(View view){

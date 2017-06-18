@@ -99,8 +99,8 @@
         android:id="@+id/ac_info"
         android:layout_width="55dp"
         android:layout_height="52dp"
-        app:srcCompat="@android:drawable/ic_menu_info_details"
-        android:background="@drawable/about"
+        android:padding="0dp"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="38dp"
@@ -113,18 +113,20 @@
         android:layout_width="54dp"
         android:layout_height="59dp"
         android:adjustViewBounds="false"
-        android:background="@drawable/settings"
+        android:padding="0dp"
+        android:background="@android:color/transparent"
         android:layout_marginRight="39dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="39dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/loginpage_login_button"
         android:layout_width="340dp"
         android:layout_height="83dp"
-        android:background="@drawable/sm_login"
+        android:padding="0dp"
+        android:background="@android:color/transparent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/create_new_user_button"
@@ -150,7 +152,8 @@
         android:id="@+id/imageView8"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        app:srcCompat="@drawable/newpword"
+        android:padding="0dp"
+        android:background="@android:color/transparent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="48dp"
@@ -168,7 +171,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/edit_text_username"
-        app:srcCompat="@drawable/username2"
+        android:padding="0dp"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="159dp" />
+
 </android.support.constraint.ConstraintLayout>
