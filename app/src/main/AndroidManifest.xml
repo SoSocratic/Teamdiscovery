@@ -26,7 +26,7 @@
         <activity
             android:name=".Create_user"
             android:parentActivityName=".System" />
-        <activity android:name=".TestGame" />
+        <activity android:name=".Game_1" />
 
         <activity android:name=".LoginPage"
             android:parentActivityName=".System">

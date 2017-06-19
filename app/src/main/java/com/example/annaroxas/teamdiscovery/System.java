@@ -14,7 +14,7 @@ public class System extends AppCompatActivity {
     }
 
     public void createUser(View view){
-        Intent createNewUser = new Intent(this, Create_user.class);
+        Intent createNewUser = new Intent(this, Game_1.class);
         startActivity(createNewUser);
     }
 
