@@ -10,6 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+
 import java.lang.String;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -23,7 +28,8 @@ import java.io.IOException;
 public class LoginPage extends AppCompatActivity {
     private static final String TAG = LoginPage.class.getSimpleName();
     EditText passText, nameText;
-    Button login_button, create_user_button;
+    ImageButton login_button;
+    Button  create_user_button;
     private static final String message = "Please fill in the required fields and try again.",
             button_label = "Ok", title = "No User name or Password entered";
 
@@ -35,6 +41,7 @@ public class LoginPage extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+        initImages();
         //Grab the reference of EditText fields
         passText = (EditText) findViewById(R.id.edit_text_password);
         nameText = (EditText) findViewById(R.id.edit_text_username);
@@ -42,7 +49,7 @@ public class LoginPage extends AppCompatActivity {
         //Add text watcher to the EditText fields
         passText.addTextChangedListener(checkEditorText);
         nameText.addTextChangedListener(checkEditorText);
-        login_button = (Button) findViewById(R.id.loginpage_login_button);
+        login_button = (ImageButton) findViewById(R.id.loginpage_login_button);
         create_user_button = (Button) findViewById(R.id.create_new_user_button);
 
         // Capture button clicks
@@ -94,6 +101,40 @@ public class LoginPage extends AppCompatActivity {
         });
 
 
+    }
+
+    private void initImages(){
+
+        ImageView image_view_eight = (ImageView) findViewById(R.id.imageView8);
+        Glide.with(this)
+                .load(R.drawable.newpword)
+                .fitCenter()
+                .into(image_view_eight);
+
+        ImageView image_view_nine = (ImageView) findViewById(R.id.imageView9);
+        Glide.with(this)
+                .load(R.drawable.username2)
+                .fitCenter()
+                .into(image_view_nine);
+
+        ImageButton logo = (ImageButton) findViewById(R.id.loginpage_login_button);
+        Glide.with(this)
+                .load(R.drawable.sm_login)
+                .fitCenter()
+                .into(logo);
+
+        ImageButton setting_button = (ImageButton) findViewById(R.id.ac_sett);
+        Glide.with(this)
+                .load(R.drawable.settings)
+                .fitCenter()
+                .into(setting_button);
+
+
+        ImageButton aboot_button = (ImageButton) findViewById(R.id.ac_info); //Eh?
+        Glide.with(this)
+                .load(R.drawable.about)
+                .fitCenter()
+                .into(aboot_button); //Eh?
     }
 
     private final TextWatcher checkEditorText = new TextWatcher() {
