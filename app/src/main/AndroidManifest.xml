@@ -23,30 +23,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Create_user"
-            android:parentActivityName=".System" />
-        <activity android:name=".Game_1" />
 
-        <activity android:name=".LoginPage"
-            android:parentActivityName=".System">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <activity android:name=".Create_user"
+                android:screenOrientation="sensorLandscape">
+            </activity>
+            <activity android:name=".LoginPage"
+                android:parentActivityName=".System"
+                android:screenOrientation="sensorLandscape">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".PresentReward"
-            android:parentActivityName=".System">
-        </activity>
-        <activity android:name=".SuccessLogin"
+            </activity>
+            <activity android:name=".PresentReward"
+                android:parentActivityName=".System">
+            </activity>
+            <activity android:name=".SuccessLogin"
+
             android:parentActivityName=".LoginPage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            android:parentActivityName=".LoginPage"
+            android:screenOrientation="sensorLandscape">
         </activity>
+
+
     </application>
 
 </manifest>
