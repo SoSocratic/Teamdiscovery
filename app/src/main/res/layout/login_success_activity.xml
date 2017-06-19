@@ -18,27 +18,28 @@
         android:padding="0dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/cc_ok"
         android:layout_width="340dp"
         android:layout_height="83dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:padding="0dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cc_add_child"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cc_add_child"
         app:layout_constraintVertical_bias="0.83" />
 
     <ImageButton
@@ -87,8 +88,7 @@
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cc_tv_welcome"
-        android:layout_marginBottom="0dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/cc_tv_welcome" />
 
     <TextView
         android:id="@+id/cc_tv_choose"
@@ -150,7 +150,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/guideline18"
         app:layout_constraintGuide_begin="20dp"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="20dp"
+        tools:layout_editor_absoluteX="0dp" />
 
     <RadioGroup
         android:id="@+id/cc_radio_child"
