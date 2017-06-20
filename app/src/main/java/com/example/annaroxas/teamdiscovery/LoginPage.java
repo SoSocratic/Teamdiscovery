@@ -91,7 +91,7 @@ public class LoginPage extends AppCompatActivity {
         // Capture button clicks
         create_user_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                Intent testgame = new Intent(getApplicationContext(),Game_1.class);
+                Intent testgame = new Intent(getApplicationContext(),TestGame.class);
 
                 //Bring existing activity instance to the foreground if it exists or create a
                 // new one if it does not exist

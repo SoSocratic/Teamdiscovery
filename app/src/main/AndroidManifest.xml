@@ -12,40 +12,36 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="LLRP"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".System">
+        <activity android:name=".System"
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-            <activity android:name=".Create_user"
-                android:screenOrientation="sensorLandscape">
-            </activity>
-            <activity android:name=".LoginPage"
-                android:parentActivityName=".System"
-                android:screenOrientation="sensorLandscape">
-
-            </activity>
-            <activity android:name=".PresentReward"
-                android:parentActivityName=".System">
-            </activity>
-            <activity android:name=".SuccessLogin"
-
-            android:parentActivityName=".LoginPage">
-
-            <action android:name="android.intent.action.MAIN" />
-
+        <activity android:name=".Create_user"
+            android:screenOrientation="sensorLandscape">
+        </activity>
+        <activity android:name=".LoginPage"
+            android:parentActivityName=".System"
+            android:screenOrientation="sensorLandscape">
+        </activity>
+        <activity android:name=".PresentReward"
+            android:parentActivityName=".System"
+            android:screenOrientation="sensorLandscape">
+        </activity>
+        <activity android:name=".SuccessLogin"
             android:parentActivityName=".LoginPage"
             android:screenOrientation="sensorLandscape">
         </activity>
-
-
+        <activity android:name=".TestGame"
+            android:screenOrientation="sensorLandscape">
+        </activity>
     </application>
 
 </manifest>

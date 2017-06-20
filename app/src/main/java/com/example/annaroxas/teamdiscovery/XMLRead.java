@@ -12,6 +12,8 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 public class XMLRead extends Application {
 
@@ -46,9 +48,7 @@ public class XMLRead extends Application {
                             if (text.equals(nameText)) {
                                 userCorrect = true;
                             }
-                        } else if (tagname.equalsIgnoreCase(passText)) {
                         }
-
                         break;
 
                     default:
@@ -66,5 +66,96 @@ public class XMLRead extends Application {
             return "Success!";
         }
         return "failed";
+    }
+
+
+    public static List<String> XMLWordParse(android.content.res.XmlResourceParser resParser, int three, int four, int five) throws IOException, XmlPullParserException {
+
+        List<String> wordList = Collections.<String>emptyList();
+        List<String> bufferList = Collections.<String>emptyList();
+        String tagTest = "";
+        String tag = "";
+        int length = 3;
+        int wordCount = 0;
+
+        //try to open the wordBank XML file
+        try {
+            // Create ResourceParser for XML file
+            XmlResourceParser xpp = resParser;
+
+            // check state
+            int eventType = xpp.getEventType();
+
+
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                switch (eventType) {
+                    case XmlPullParser.START_TAG:
+                        switch(xpp.getName()){
+                            case "three":
+                                tag = "three";
+                                break;
+                            case "four":
+                                tag = "four";
+                                break;
+                            case "five":
+                                tag = "five";
+                                break;
+                            default:
+                                break;
+                    }
+                        break;
+                    case XmlPullParser.TEXT:
+                        //add the word to the buffer list
+                        bufferList.add(xpp.getText());
+                        break;
+                    case XmlPullParser.END_TAG:
+                        tagTest = xpp.getName();
+
+                        //if we reach a letter count end tag shuffle the list for randomization
+                        if(tagTest.equals(tag)) {
+                            Collections.shuffle(bufferList);
+                        }
+                        //get the number of words for the current letter count
+                        //and set the starting tag to test later
+                        switch (length) {
+                            case 3:
+                                wordCount = three;
+                                tagTest = "three";
+                                break;
+                            case 4:
+                                wordCount = four;
+                                tagTest = "four";
+                                break;
+                            case 5:
+                                wordCount = five;
+                                tagTest = "five";
+                                break;
+                        }
+
+                        //grab the number of words needed for the letter count from the randomized bufferList
+                        for (int count = 0; count > wordCount; count++) {
+                            wordList.add(bufferList.get(count));
+                        }
+                        //increment length of words being grabbed
+                        length++;
+
+                        //empty the buffer of words of the previous length
+                        bufferList.clear();
+                        break;
+
+                    default:
+                        break;
+                }
+
+                eventType = xpp.next();
+            }
+
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //return the 5 words for the game mode
+        return wordList;
     }
 }

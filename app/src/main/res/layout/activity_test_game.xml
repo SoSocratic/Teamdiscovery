@@ -20,7 +20,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/option"
         android:gravity="center"
-        android:text="@string/option_1"
+        android:text="@string/option_A"
         android:textStyle="bold" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/option"
         android:gravity="center"
-        android:text="@string/option_2"
+        android:text="@string/option_B"
         android:textStyle="bold" />
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/option"
         android:gravity="center"
-        android:text="@string/option_3"
+        android:text="@string/option_C"
         android:textStyle="bold" />
 
     <TextView
@@ -50,7 +50,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/choice"
         android:gravity="center"
-        android:text="@string/choice_1" />
+        android:text="@string/choice_A" />
 
     <TextView
         android:id="@+id/choice_2"
@@ -59,7 +59,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/choice"
         android:gravity="center"
-        android:text="@string/choice_2" />
+        android:text="@string/choice_B" />
 
     <TextView
         android:id="@+id/choice_3"
@@ -68,7 +68,7 @@
         android:layout_margin="5dp"
         android:background="@drawable/choice"
         android:gravity="center"
-        android:text="@string/choice_3" />
+        android:text="@string/choice_C" />
 
 
 </LinearLayout>
