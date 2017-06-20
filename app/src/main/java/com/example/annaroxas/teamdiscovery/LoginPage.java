@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -46,9 +48,6 @@ public class LoginPage extends AppCompatActivity {
         passText = (EditText) findViewById(R.id.edit_text_password);
         nameText = (EditText) findViewById(R.id.edit_text_username);
 
-        //Add text watcher to the EditText fields
-        passText.addTextChangedListener(checkEditorText);
-        nameText.addTextChangedListener(checkEditorText);
         login_button = (ImageButton) findViewById(R.id.loginpage_login_button);
         create_user_button = (Button) findViewById(R.id.create_new_user_button);
 
@@ -91,7 +90,7 @@ public class LoginPage extends AppCompatActivity {
         // Capture button clicks
         create_user_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                Intent testgame = new Intent(getApplicationContext(),TestGame.class);
+                Intent testgame = new Intent(getApplicationContext(),Create_user.class);
 
                 //Bring existing activity instance to the foreground if it exists or create a
                 // new one if it does not exist
@@ -129,7 +128,6 @@ public class LoginPage extends AppCompatActivity {
                 .fitCenter()
                 .into(setting_button);
 
-
         ImageButton aboot_button = (ImageButton) findViewById(R.id.ac_info); //Eh?
         Glide.with(this)
                 .load(R.drawable.about)
@@ -137,25 +135,5 @@ public class LoginPage extends AppCompatActivity {
                 .into(aboot_button); //Eh?
     }
 
-    private final TextWatcher checkEditorText = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if( nameText.getText().toString().length() == 0 )
-                nameText.setError( "Username is a required field" );
-
-            if( passText.getText().toString().length() == 0 )
-                passText.setError( "Password is a required field" );
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
 
 }

@@ -23,8 +23,9 @@ public class Create_user extends AppCompatActivity {
     private static final String TAG = LoginPage.class.getSimpleName();
     private static ImageButton button_confirm;
     EditText passText, nameText, confirmText, emailText;
-    private static final String message = "Please re-enter your password and try again.",
-            button_label = "Ok", title = "Passwords Mismatch.";
+    private static final String message = "Please check all fields to ensure " +
+            "they are filled in and password fields match.",
+            button_label = "Ok", title = "Information Entry Error";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +39,14 @@ public class Create_user extends AppCompatActivity {
         confirmText = (EditText) findViewById(R.id.ac_tx_repword);
         emailText = (EditText) findViewById(R.id.ac_tx_email);
 
-        //Add text watcher to the EditText fields
-        passText.addTextChangedListener(checkEditorText);
-        nameText.addTextChangedListener(checkEditorText);
-        confirmText.addTextChangedListener(checkEditorText);
-        emailText.addTextChangedListener(checkEditorText);
         button_confirm = (ImageButton) findViewById(R.id.cu_create);
 
         // Capture button clicks
         button_confirm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                if(Objects.equals(passText.getText().toString(),confirmText.getText().toString())){
+                if(Objects.equals(passText.getText().toString(),confirmText.getText().toString()) &&
+                        (nameText.getText().toString().length() > 0 &&
+                        passText.getText().toString().length() > 0)){
             /*
         * CODE TO INSERT NEW USER INFO INTO XML
         * GOES HERE
@@ -57,7 +55,7 @@ public class Create_user extends AppCompatActivity {
                 } else {
                     FragmentManager fm = getFragmentManager();
                     SingleResponseDialog alertdFragment = SingleResponseDialog.newInstance(title,
-                            "message", "Ok");
+                            message, button_label);
                     // Show Alert DialogFragment
                     alertdFragment.show(fm, "Confirm Error");
                 }
@@ -112,34 +110,5 @@ public class Create_user extends AppCompatActivity {
 
 
     }
-
-    private final TextWatcher checkEditorText = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            if( nameText.getText().toString().length() == 0 ){
-                nameText.setError( "Username is a required field" );
-            }
-
-            if( passText.getText().toString().length() == 0 )
-                passText.setError( "Password is a required field" );
-
-            if( emailText.getText().toString().length() == 0 )
-                emailText.setError( "Password is a required field" );
-
-            if( confirmText.getText().toString().length() == 0 )
-                confirmText.setError( "Password is a required field" );
-
-        }
-         @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
 
 }
