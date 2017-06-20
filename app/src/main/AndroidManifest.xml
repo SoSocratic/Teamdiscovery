@@ -48,7 +48,9 @@
             android:parentActivityName=".LoginPage"
             android:screenOrientation="sensorLandscape">
         </activity>
-
+        <activity android:name=".TestGame"
+            android:screenOrientation="sensorLandscape">
+        </activity>
     </application>
 
 </manifest>

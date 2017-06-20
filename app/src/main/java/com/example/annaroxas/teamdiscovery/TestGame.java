@@ -1,5 +1,6 @@
 package com.example.annaroxas.teamdiscovery;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,37 +12,97 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 public class TestGame extends AppCompatActivity {
 
-    private TextView option1, option2, option3, choice1, choice2, choice3;
+    private ImageView option1, option2, option3, option4, option5, choice1, choice2, choice3, choice4, choice5, wordHintPic, progressPic;
+    private int currentRound;
+    private String currentWord;
+    List<String> wordList;
+    String packa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_game);
+        setContentView(R.layout.start_game);
 
-        //views to drag
-        option1 = (TextView)findViewById(R.id.option_1);
-        option2 = (TextView)findViewById(R.id.option_2);
-        option3 = (TextView)findViewById(R.id.option_3);
+        //set a string with the package for use later
+        packa = getPackageName();
 
-        //views to drop onto
-        choice1 = (TextView)findViewById(R.id.choice_1);
-        choice2 = (TextView)findViewById(R.id.choice_2);
-        choice3 = (TextView)findViewById(R.id.choice_3);
+        //word hint picture
+        wordHintPic = (ImageView)findViewById(R.id.sg_picture);
+        //progress image and text
+        progressPic = (ImageView)findViewById(R.id.sg_prg1);
+
+        //views to drag and drop
+        option1 = (ImageView)findViewById(R.id.option_1);
+        option2 = (ImageView)findViewById(R.id.option_2);
+        option3 = (ImageView)findViewById(R.id.option_3);
+        option4 = (ImageView)findViewById(R.id.option_4);
+        option5 = (ImageView)findViewById(R.id.option_5);
+
+        //view containers to drop onto
+        choice1 = (ImageView)findViewById(R.id.choice_1);
+        choice2 = (ImageView)findViewById(R.id.choice_2);
+        choice3 = (ImageView)findViewById(R.id.choice_3);
+        choice4 = (ImageView)findViewById(R.id.choice_4);
+        choice5 = (ImageView)findViewById(R.id.choice_5);
+
+        //set tagIDs to allow for matching correct containers to letters
+        option1.setTag(1);
+        option2.setTag(2);
+        option3.setTag(3);
+        option4.setTag(4);
+        option5.setTag(5);
+
+        choice1.setTag(1);
+        choice2.setTag(2);
+        choice3.setTag(3);
+        choice4.setTag(4);
+        choice5.setTag(5);
+
 
         //set touch listeners
         option1.setOnTouchListener(new ChoiceTouchListener());
         option2.setOnTouchListener(new ChoiceTouchListener());
         option3.setOnTouchListener(new ChoiceTouchListener());
+        option4.setOnTouchListener(new ChoiceTouchListener());
+        option5.setOnTouchListener(new ChoiceTouchListener());
+
         //set drag listeners
         choice1.setOnDragListener(new ChoiceDragListener());
         choice2.setOnDragListener(new ChoiceDragListener());
         choice3.setOnDragListener(new ChoiceDragListener());
+        choice4.setOnDragListener(new ChoiceDragListener());
+        choice5.setOnDragListener(new ChoiceDragListener());
 
+        currentRound = 1;
 
+        wordList = Collections.<String>emptyList();
+        try {
+            wordList = XMLRead.XMLWordParse(getApplicationContext().getResources().getXml(R.xml.game_bank), 2, 2, 1);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+
+        //setup first word and array of characters
+        currentWord = wordList.get(0);
+
+        wordList.remove(0);
+        GameSetup(currentWord);
     }
 
 
@@ -65,6 +126,123 @@ public class TestGame extends AppCompatActivity {
 
     }
 
+    private void GameSetup(String word) {
+        int length = word.length();
+        char[] charList = new char[length];
+        charList = word.toCharArray();
+
+
+        int id;
+        Context c = getApplicationContext();
+
+        //use the length to set the characters and make the used blocks visible
+        switch(length){
+            case 3:
+                id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
+                option1.setImageResource(id);
+                option1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
+                option2.setImageResource(id);
+                option2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
+                option3.setImageResource(id);
+                option3.setVisibility(View.VISIBLE);
+
+                //ensure unneeded options are not rendered or used
+                option4.setVisibility(View.GONE);
+                option5.setVisibility(View.GONE);
+
+                //set containers to drop letters into
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
+                choice1.setImageResource(id);
+                choice1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
+                choice2.setImageResource(id);
+                choice2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
+                choice3.setImageResource(id);
+                choice3.setVisibility(View.VISIBLE);
+
+                //ensure uneeded choices are not rendered or used
+                choice4.setVisibility(View.GONE);
+                choice5.setVisibility(View.GONE);
+
+                break;
+            case 4:
+                id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
+                option1.setImageResource(id);
+                option1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
+                option2.setImageResource(id);
+                option2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
+                option3.setImageResource(id);
+                option3.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[3], null, packa);
+                option4.setImageResource(id);
+                option4.setVisibility(View.VISIBLE);
+
+                //ensure unneeded options are not rendered or used
+                option5.setVisibility(View.GONE);
+
+                //set containers to drop letters into
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
+                choice1.setImageResource(id);
+                choice1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
+                choice2.setImageResource(id);
+                choice2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
+                choice3.setImageResource(id);
+                choice3.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[3], null, packa);
+                choice4.setImageResource(id);
+                choice4.setVisibility(View.VISIBLE);
+
+                //ensure uneeded choices are not rendered or used
+                choice5.setVisibility(View.GONE);
+
+                break;
+            case 5:
+                id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
+                option1.setImageResource(id);
+                option1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
+                option2.setImageResource(id);
+                option2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
+                option3.setImageResource(id);
+                option3.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[3], null, packa);
+                option4.setImageResource(id);
+                option4.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList[4], null, packa);
+                option5.setImageResource(id);
+                option5.setVisibility(View.VISIBLE);
+
+                //set containers to drop letters into
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
+                choice1.setImageResource(id);
+                choice1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
+                choice2.setImageResource(id);
+                choice2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
+                choice3.setImageResource(id);
+                choice3.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[3], null, packa);
+                choice4.setImageResource(id);
+                choice4.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList[4], null, packa);
+                choice5.setImageResource(id);
+                choice5.setVisibility(View.VISIBLE);
+
+                break;
+
+            default:
+                break;
+        }
+    }
 
     private class ChoiceDragListener implements OnDragListener {
         @Override
@@ -83,29 +261,53 @@ public class TestGame extends AppCompatActivity {
                 case DragEvent.ACTION_DROP:
                     //handle the dragged view being dropped over a drop view
                     View view = (View) event.getLocalState();
+                    //view dragged item is being dropped on
+                    ImageView dropTarget = (ImageView) v;
 
+                    // test if icon is in wrong spot
+                    if(view.getTag() != dropTarget.getTag()){
+                        break;
+                    }
                     //stop displaying the view where it was before it was dragged
                     view.setVisibility(View.INVISIBLE);
-                    //view dragged item is being dropped on
-                    TextView dropTarget = (TextView) v;
+
                     //view being dragged and dropped
-                    TextView dropped = (TextView) view;
-                    //update the text in the target view to reflect the data being dropped
-                    dropTarget.setText(dropped.getText());
-                    //make it bold to highlight the fact that an item has been dropped
-                    dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-                    //if an item has already been dropped here, there will be a tag
-                    Object tag = dropTarget.getTag();
-                    //if there is already an item here, set it back visible in its original place
-                    if(tag!=null)
-                    {
-                        //the tag is the view id already dropped here
-                        int existingID = (Integer)tag;
-                        //set the original view visible again
-                        findViewById(existingID).setVisibility(View.VISIBLE);
+                    ImageView dropped = (ImageView) view;
+                    //update the image in the target view to reflect the data being dropped
+                    dropTarget.setImageDrawable(dropped.getDrawable());
+
+
+                    //check if all 3 are correct/invisible
+                    if(option1.getVisibility() == view.INVISIBLE && option2.getVisibility() == view.INVISIBLE && option3.getVisibility() == view.INVISIBLE){
+                        //win condition logic goes here
+                        currentWord = wordList.get(0);
+                        wordList.remove(0);
+                        GameSetup(currentWord);
+                        if(currentRound == 5){
+                            //end activity and show the final reward and congrats for completing the whole round
+                            //change hint picture to success pic
+                            Context c = getApplicationContext();
+                            //change hint picture
+                            int id = c.getResources().getIdentifier("drawable/success", null, packa);
+                            wordHintPic.setImageResource(id);
+                            break;
+                        }
+                        Context c = getApplicationContext();
+
+                        //increment the currentRound
+                        currentRound++;
+
+                        //change progress picture
+                        int id = c.getResources().getIdentifier("drawable/prg_"+ currentRound + "of5", null, packa);
+                        progressPic.setImageResource(id);
+
+
+                        //change hint picture
+                        id = c.getResources().getIdentifier("drawable/"+ currentWord, null, packa);
+                        wordHintPic.setImageResource(id);
+
+
                     }
-                    //set the tag in the target view to the ID of the view being dropped
-                    dropTarget.setTag(dropped.getId());
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     //no action necessary
