@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -25,11 +28,16 @@ import java.util.List;
 
 public class TestGame extends AppCompatActivity {
 
-    private ImageView option1, option2, option3, option4, option5, choice1, choice2, choice3, choice4, choice5, wordHintPic, progressPic;
+    private ImageView option1, option2, option3, option4, option5, choice1, choice2, choice3,
+            choice4, choice5, wordHintPic, progressPic;
     private int currentRound;
     private String currentWord;
     List<String> wordList;
     String packa;
+
+    //single haracter tags for letter matching
+    char option1Tag, option2Tag, option3Tag, option4Tag, option5Tag;
+    char choice1Tag, choice2Tag, choice3Tag, choice4Tag, choice5Tag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +66,6 @@ public class TestGame extends AppCompatActivity {
         choice4 = (ImageView)findViewById(R.id.choice_4);
         choice5 = (ImageView)findViewById(R.id.choice_5);
 
-        //set tagIDs to allow for matching correct containers to letters
-        option1.setTag(1);
-        option2.setTag(2);
-        option3.setTag(3);
-        option4.setTag(4);
-        option5.setTag(5);
-
-        choice1.setTag(1);
-        choice2.setTag(2);
-        choice3.setTag(3);
-        choice4.setTag(4);
-        choice5.setTag(5);
-
 
         //set touch listeners
         option1.setOnTouchListener(new ChoiceTouchListener());
@@ -88,7 +83,7 @@ public class TestGame extends AppCompatActivity {
 
         currentRound = 1;
 
-        wordList = Collections.<String>emptyList();
+        wordList = new ArrayList<String>();
         try {
             wordList = XMLRead.XMLWordParse(getApplicationContext().getResources().getXml(R.xml.game_bank), 2, 2, 1);
 
@@ -138,14 +133,31 @@ public class TestGame extends AppCompatActivity {
         //use the length to set the characters and make the used blocks visible
         switch(length){
             case 3:
+                //set character tags for choices for matching
+                choice1Tag = charList[0];
+                choice2Tag = charList[1];
+                choice3Tag = charList[2];
+
+                //shuffle charList for randomness
+                //Collections.shuffle(charList);
+
                 id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
-                option1.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option1);
                 option1.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
-                option2.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option2);
                 option2.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
-                option3.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option3);
                 option3.setVisibility(View.VISIBLE);
 
                 //ensure unneeded options are not rendered or used
@@ -154,13 +166,22 @@ public class TestGame extends AppCompatActivity {
 
                 //set containers to drop letters into
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
-                choice1.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice1);
                 choice1.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
-                choice2.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice2);
                 choice2.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
-                choice3.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice3);
                 choice3.setVisibility(View.VISIBLE);
 
                 //ensure uneeded choices are not rendered or used
@@ -170,16 +191,28 @@ public class TestGame extends AppCompatActivity {
                 break;
             case 4:
                 id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
-                option1.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option1);
                 option1.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
-                option2.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option2);
                 option2.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
-                option3.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option3);
                 option3.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[3], null, packa);
-                option4.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option4);
                 option4.setVisibility(View.VISIBLE);
 
                 //ensure unneeded options are not rendered or used
@@ -187,16 +220,28 @@ public class TestGame extends AppCompatActivity {
 
                 //set containers to drop letters into
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
-                choice1.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice1);
                 choice1.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
-                choice2.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice2);
                 choice2.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
-                choice3.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice3);
                 choice3.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[3], null, packa);
-                choice4.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice4);
                 choice4.setVisibility(View.VISIBLE);
 
                 //ensure uneeded choices are not rendered or used
@@ -205,36 +250,66 @@ public class TestGame extends AppCompatActivity {
                 break;
             case 5:
                 id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
-                option1.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option1);
                 option1.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
-                option2.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option2);
                 option2.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
-                option3.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option3);
                 option3.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[3], null, packa);
-                option4.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option4);
                 option4.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/"+charList[4], null, packa);
-                option5.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option5);
                 option5.setVisibility(View.VISIBLE);
 
                 //set containers to drop letters into
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
-                choice1.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice1);
                 choice1.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
-                choice2.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice2);
                 choice2.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
-                choice3.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice3);
                 choice3.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[3], null, packa);
-                choice4.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice4);
                 choice4.setVisibility(View.VISIBLE);
                 id = c.getResources().getIdentifier("drawable/bw_"+charList[4], null, packa);
-                choice5.setImageResource(id);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice5);
                 choice5.setVisibility(View.VISIBLE);
 
                 break;
@@ -289,7 +364,10 @@ public class TestGame extends AppCompatActivity {
                             Context c = getApplicationContext();
                             //change hint picture
                             int id = c.getResources().getIdentifier("drawable/success", null, packa);
-                            wordHintPic.setImageResource(id);
+                            Glide.with(c)
+                                    .load(id)
+                                    .fitCenter()
+                                    .into(wordHintPic);
                             break;
                         }
                         Context c = getApplicationContext();
@@ -299,12 +377,18 @@ public class TestGame extends AppCompatActivity {
 
                         //change progress picture
                         int id = c.getResources().getIdentifier("drawable/prg_"+ currentRound + "of5", null, packa);
-                        progressPic.setImageResource(id);
+                        Glide.with(c)
+                                .load(id)
+                                .fitCenter()
+                                .into(progressPic);
 
 
                         //change hint picture
                         id = c.getResources().getIdentifier("drawable/"+ currentWord, null, packa);
-                        wordHintPic.setImageResource(id);
+                        Glide.with(c)
+                                .load(id)
+                                .fitCenter()
+                                .into(wordHintPic);
 
 
                     }
