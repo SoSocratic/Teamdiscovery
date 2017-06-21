@@ -27,6 +27,15 @@
         <activity android:name=".Create_user"
             android:screenOrientation="sensorLandscape">
         </activity>
+        <activity android:name=".AddChild"
+            android:screenOrientation="sensorLandscape">
+        </activity>
+        <activity android:name=".ChooseGame"
+            android:screenOrientation="sensorLandscape">
+        </activity>
+        <activity android:name=".ChildConfig"
+            android:screenOrientation="sensorLandscape">
+        </activity>
         <activity android:name=".LoginPage"
             android:parentActivityName=".System"
             android:screenOrientation="sensorLandscape">
