@@ -3,18 +3,14 @@ package com.example.annaroxas.teamdiscovery;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.ClipData;
-import android.graphics.Typeface;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -35,7 +31,7 @@ public class TestGame extends AppCompatActivity {
     List<String> wordList;
     String packa;
 
-    //single haracter tags for letter matching
+    //single character tags for letter matching
     char option1Tag, option2Tag, option3Tag, option4Tag, option5Tag;
     char choice1Tag, choice2Tag, choice3Tag, choice4Tag, choice5Tag;
 
@@ -123,61 +119,55 @@ public class TestGame extends AppCompatActivity {
 
     private void GameSetup(String word) {
         int length = word.length();
-        char[] charList = new char[length];
-        charList = word.toCharArray();
-
-
-        int id;
+        List<Character> charList = new ArrayList<Character>();
         Context c = getApplicationContext();
+
+        //change progress picture
+        int id = c.getResources().getIdentifier("drawable/prg_"+ Integer.toString(currentRound) + "of5", null, packa);
+        Glide.with(c)
+                .load(id)
+                .fitCenter()
+                .into(progressPic);
+
+
+        //change hint picture
+        id = c.getResources().getIdentifier("drawable/"+ currentWord, null, packa);
+        Glide.with(c)
+                .load(id)
+                .fitCenter()
+                .into(wordHintPic);
+
+        wordHintPic.setVisibility(View.VISIBLE);
+        for (char cha : word.toCharArray()) {
+            charList.add(cha);
+        }
+
+
 
         //use the length to set the characters and make the used blocks visible
         switch(length){
+            //the word has three letters
             case 3:
                 //set character tags for choices for matching
-                choice1Tag = charList[0];
-                choice2Tag = charList[1];
-                choice3Tag = charList[2];
+                choice1Tag = charList.get(0);
+                choice2Tag = charList.get(1);
+                choice3Tag = charList.get(2);
 
-                //shuffle charList for randomness
-                //Collections.shuffle(charList);
-
-                id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(option1);
-                option1.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(option2);
-                option2.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(option3);
-                option3.setVisibility(View.VISIBLE);
-
-                //ensure unneeded options are not rendered or used
-                option4.setVisibility(View.GONE);
-                option5.setVisibility(View.GONE);
 
                 //set containers to drop letters into
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(0), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(choice1);
                 choice1.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(1), null,packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(choice2);
                 choice2.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(2), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
@@ -188,56 +178,72 @@ public class TestGame extends AppCompatActivity {
                 choice4.setVisibility(View.GONE);
                 choice5.setVisibility(View.GONE);
 
-                break;
-            case 4:
-                id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
+
+                //shuffle charList for randomness
+                Collections.shuffle(charList);
+
+                //set the dragable letters tags
+                option1Tag = charList.get(0);
+                option2Tag = charList.get(1);
+                option3Tag = charList.get(2);
+
+                //set the images for each letters dragable
+                id = c.getResources().getIdentifier("drawable/"+charList.get(0), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option1);
                 option1.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
+
+                id = c.getResources().getIdentifier("drawable/"+charList.get(1), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option2);
                 option2.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
+
+                id = c.getResources().getIdentifier("drawable/"+charList.get(2), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option3);
                 option3.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[3], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(option4);
-                option4.setVisibility(View.VISIBLE);
 
                 //ensure unneeded options are not rendered or used
+                option4.setVisibility(View.GONE);
                 option5.setVisibility(View.GONE);
 
+                break;
+            //the word has four letters
+            case 4:
+
+                //set character tags for choices for matching
+                choice1Tag = charList.get(0);
+                choice2Tag = charList.get(1);
+                choice3Tag = charList.get(2);
+                choice4Tag = charList.get(3);
+
+
                 //set containers to drop letters into
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(0), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(choice1);
                 choice1.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(1), null,packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(choice2);
                 choice2.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(2), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(choice3);
                 choice3.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[3], null, packa);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(3), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
@@ -247,70 +253,132 @@ public class TestGame extends AppCompatActivity {
                 //ensure uneeded choices are not rendered or used
                 choice5.setVisibility(View.GONE);
 
-                break;
-            case 5:
-                id = c.getResources().getIdentifier("drawable/"+charList[0], null, packa);
+                //shuffle charList for randomness
+                Collections.shuffle(charList);
+
+                //set the dragable letters tags
+                option1Tag = charList.get(0);
+                option2Tag = charList.get(1);
+                option3Tag = charList.get(2);
+                option4Tag = charList.get(3);
+
+                //set the images for each letters dragable
+                id = c.getResources().getIdentifier("drawable/"+charList.get(0), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option1);
                 option1.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[1], null, packa);
+                id = c.getResources().getIdentifier("drawable/"+charList.get(1), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option2);
                 option2.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[2], null, packa);
+                id = c.getResources().getIdentifier("drawable/"+charList.get(2), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option3);
                 option3.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[3], null, packa);
+                id = c.getResources().getIdentifier("drawable/"+charList.get(3), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option4);
                 option4.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/"+charList[4], null, packa);
+
+                //ensure unneeded options are not rendered or used
+                option5.setVisibility(View.GONE);
+
+
+                break;
+
+            //the word has five letters
+            case 5:
+
+                //set character tags for choices for matching
+                choice1Tag = charList.get(0);
+                choice2Tag = charList.get(1);
+                choice3Tag = charList.get(2);
+                choice4Tag = charList.get(3);
+                choice5Tag = charList.get(4);
+
+
+                //set containers to drop letters into
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(0), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice1);
+                choice1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(1), null,packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice2);
+                choice2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(2), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice3);
+                choice3.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(3), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice4);
+                choice4.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/bw_"+charList.get(4), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(choice5);
+                choice5.setVisibility(View.VISIBLE);
+
+                //shuffle charList for randomness
+                Collections.shuffle(charList);
+
+                //set the dragable letters tags
+                option1Tag = charList.get(0);
+                option2Tag = charList.get(1);
+                option3Tag = charList.get(2);
+                option4Tag = charList.get(3);
+                option5Tag = charList.get(4);
+
+                //set the images for each letters dragable
+                id = c.getResources().getIdentifier("drawable/"+charList.get(0), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option1);
+                option1.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList.get(1), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option2);
+                option2.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList.get(2), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option3);
+                option3.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList.get(3), null, packa);
+                Glide.with(this)
+                        .load(id)
+                        .fitCenter()
+                        .into(option4);
+                option4.setVisibility(View.VISIBLE);
+                id = c.getResources().getIdentifier("drawable/"+charList.get(4), null, packa);
                 Glide.with(this)
                         .load(id)
                         .fitCenter()
                         .into(option5);
                 option5.setVisibility(View.VISIBLE);
 
-                //set containers to drop letters into
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[0], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(choice1);
-                choice1.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[1], null,packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(choice2);
-                choice2.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[2], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(choice3);
-                choice3.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[3], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(choice4);
-                choice4.setVisibility(View.VISIBLE);
-                id = c.getResources().getIdentifier("drawable/bw_"+charList[4], null, packa);
-                Glide.with(this)
-                        .load(id)
-                        .fitCenter()
-                        .into(choice5);
-                choice5.setVisibility(View.VISIBLE);
 
                 break;
 
@@ -340,9 +408,9 @@ public class TestGame extends AppCompatActivity {
                     ImageView dropTarget = (ImageView) v;
 
                     // test if icon is in wrong spot
-                    if(view.getTag() != dropTarget.getTag()){
-                        break;
-                    }
+                    //if(view. != dropTarget.getTag()){
+                      //  break;
+                    //}
                     //stop displaying the view where it was before it was dragged
                     view.setVisibility(View.INVISIBLE);
 
@@ -362,6 +430,22 @@ public class TestGame extends AppCompatActivity {
                             //end activity and show the final reward and congrats for completing the whole round
                             //change hint picture to success pic
                             Context c = getApplicationContext();
+
+                            //remove everything else
+                            option1.setVisibility(View.GONE);
+                            option2.setVisibility(View.GONE);
+                            option3.setVisibility(View.GONE);
+                            option4.setVisibility(View.GONE);
+                            option5.setVisibility(View.GONE);
+
+                            choice1.setVisibility(View.GONE);
+                            choice2.setVisibility(View.GONE);
+                            choice3.setVisibility(View.GONE);
+                            choice4.setVisibility(View.GONE);
+                            choice5.setVisibility(View.GONE);
+
+                            progressPic.setVisibility(View.GONE);
+
                             //change hint picture
                             int id = c.getResources().getIdentifier("drawable/success", null, packa);
                             Glide.with(c)
@@ -374,22 +458,6 @@ public class TestGame extends AppCompatActivity {
 
                         //increment the currentRound
                         currentRound++;
-
-                        //change progress picture
-                        int id = c.getResources().getIdentifier("drawable/prg_"+ currentRound + "of5", null, packa);
-                        Glide.with(c)
-                                .load(id)
-                                .fitCenter()
-                                .into(progressPic);
-
-
-                        //change hint picture
-                        id = c.getResources().getIdentifier("drawable/"+ currentWord, null, packa);
-                        Glide.with(c)
-                                .load(id)
-                                .fitCenter()
-                                .into(wordHintPic);
-
 
                     }
                     break;
