@@ -85,7 +85,7 @@ public class System extends AppCompatActivity {
     }
 
     public void displayTest(View view){
-        Intent showTest = new Intent(this, SuccessLogin.class);
+        Intent showTest = new Intent(this, TestGame.class);
         startActivity(showTest);
     }
 }
