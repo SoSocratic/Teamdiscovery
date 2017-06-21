@@ -35,6 +35,11 @@ public class TestGame extends AppCompatActivity {
     char option1Tag, option2Tag, option3Tag, option4Tag, option5Tag;
     char choice1Tag, choice2Tag, choice3Tag, choice4Tag, choice5Tag;
 
+    //ints for holding the imageView id's for checking
+    int option1ID, option2ID, option3ID, option4ID, option5ID;
+    int choice1ID, choice2ID, choice3ID, choice4ID, choice5ID;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,17 +55,27 @@ public class TestGame extends AppCompatActivity {
 
         //views to drag and drop
         option1 = (ImageView)findViewById(R.id.option_1);
+        option1ID = R.id.option_1;
         option2 = (ImageView)findViewById(R.id.option_2);
+        option2ID = R.id.option_2;
         option3 = (ImageView)findViewById(R.id.option_3);
+        option3ID = R.id.option_3;
         option4 = (ImageView)findViewById(R.id.option_4);
+        option4ID = R.id.option_4;
         option5 = (ImageView)findViewById(R.id.option_5);
+        option5ID = R.id.option_5;
 
         //view containers to drop onto
         choice1 = (ImageView)findViewById(R.id.choice_1);
+        choice1ID = R.id.choice_1;
         choice2 = (ImageView)findViewById(R.id.choice_2);
+        choice2ID = R.id.choice_2;
         choice3 = (ImageView)findViewById(R.id.choice_3);
+        choice3ID = R.id.choice_3;
         choice4 = (ImageView)findViewById(R.id.choice_4);
+        choice4ID = R.id.choice_4;
         choice5 = (ImageView)findViewById(R.id.choice_5);
+        choice5ID = R.id.choice_5;
 
 
         //set touch listeners
@@ -387,9 +402,44 @@ public class TestGame extends AppCompatActivity {
         }
     }
 
+    //make a workaround for not being able to use tags because of Glide
+    private char getDragTag(int id){
+
+        char tag = '0';
+
+
+        if(id == option1ID) {
+            tag = option1Tag;
+        }else if(id == option2ID){
+            tag = option2Tag;
+        }else if(id == option3ID){
+            tag = option3Tag;
+        }else if(id == option4ID){
+            tag = option4Tag;
+        }else if(id == option5ID){
+            tag = option5Tag;
+        }else if(id == choice1ID){
+            tag = choice1Tag;
+        }else if(id == choice2ID){
+            tag = choice2Tag;
+        }else if(id == choice3ID){
+            tag = choice3Tag;
+        }else if(id == choice4ID){
+            tag = choice4Tag;
+        }else if(id == choice5ID){
+            tag = choice5Tag;
+        }
+
+        //return the character tag to identify which option matches which choice
+        return tag;
+    }
+
     private class ChoiceDragListener implements OnDragListener {
         @Override
         public boolean onDrag(View v, DragEvent event) {
+            //tag for use in identification
+            char dragTag;
+
             //handle drag events
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
@@ -408,9 +458,9 @@ public class TestGame extends AppCompatActivity {
                     ImageView dropTarget = (ImageView) v;
 
                     // test if icon is in wrong spot
-                    //if(view. != dropTarget.getTag()){
-                      //  break;
-                    //}
+                    if(!((getDragTag(view.getId())==(getDragTag(dropTarget.getId()))))){
+                        break;
+                    }
                     //stop displaying the view where it was before it was dragged
                     view.setVisibility(View.INVISIBLE);
 
