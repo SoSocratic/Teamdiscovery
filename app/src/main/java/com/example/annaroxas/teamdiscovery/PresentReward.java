@@ -111,7 +111,7 @@ public class PresentReward extends YouTubeBaseActivity implements YouTubePlayer.
     public void onVideoEnded() {
         //THIS NEEDS TO BE CHANGED! IT SHOULD NOT GO TO CREATE USER ACTIVITY UPON
         //COMPLETION
-        Intent create_user = new Intent(getApplicationContext(),Create_user.class);
+        Intent create_user = new Intent(getApplicationContext(),System.class);
 
         //Bring existing activity instance to the foreground if it exists or create a
         // new one if it does not exist
