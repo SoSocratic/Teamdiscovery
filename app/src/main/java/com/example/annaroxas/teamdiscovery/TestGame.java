@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -473,9 +474,7 @@ public class TestGame extends AppCompatActivity {
                     //check if all 3 are correct/invisible
                     if(option1.getVisibility() == view.INVISIBLE && option2.getVisibility() == view.INVISIBLE && option3.getVisibility() == view.INVISIBLE){
                         //win condition logic goes here
-                        currentWord = wordList.get(0);
-                        wordList.remove(0);
-                        GameSetup(currentWord);
+
                         if(currentRound == 5){
                             //end activity and show the final reward and congrats for completing the whole round
                             //change hint picture to success pic
@@ -506,6 +505,9 @@ public class TestGame extends AppCompatActivity {
                         }
                         Context c = getApplicationContext();
 
+                        currentWord = wordList.get(0);
+                        wordList.remove(0);
+                        GameSetup(currentWord);
                         //increment the currentRound
                         currentRound++;
 
