@@ -88,4 +88,11 @@ public class System extends AppCompatActivity {
         Intent showTest = new Intent(this, TestGame.class);
         startActivity(showTest);
     }
+
+    public void startRewards(View view){
+
+        Intent beginRewards = new Intent(this, Create_user.class);
+        startActivity(beginRewards);
+    }
+
 }

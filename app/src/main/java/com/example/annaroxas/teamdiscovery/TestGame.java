@@ -1,6 +1,7 @@
 package com.example.annaroxas.teamdiscovery;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.ClipData;
@@ -110,7 +111,10 @@ public class TestGame extends AppCompatActivity {
 
         wordList.remove(0);
         GameSetup(currentWord);
+
     }
+
+
 
 
     private final class ChoiceTouchListener implements OnTouchListener {
@@ -438,8 +442,15 @@ public class TestGame extends AppCompatActivity {
     private class ChoiceDragListener implements OnDragListener {
         @Override
         public boolean onDrag(View v, DragEvent event) {
+
+            //handle the dragged view being dropped over a drop view
+            View view = (View) event.getLocalState();
+            //view dragged item is being dropped on
+            ImageView dropTarget = (ImageView) v;
+
             //tag for use in identification
-            char dragTag;
+            char dragTag = getDragTag(view.getId());
+            char dropTag = getDragTag(dropTarget.getId());
 
             //handle drag events
             switch (event.getAction()) {
@@ -453,13 +464,9 @@ public class TestGame extends AppCompatActivity {
                     //no action necessary
                     break;
                 case DragEvent.ACTION_DROP:
-                    //handle the dragged view being dropped over a drop view
-                    View view = (View) event.getLocalState();
-                    //view dragged item is being dropped on
-                    ImageView dropTarget = (ImageView) v;
 
                     // test if icon is in wrong spot
-                    if(!((getDragTag(view.getId())==(getDragTag(dropTarget.getId()))))){
+                    if(!(dragTag == dropTag)){
                         break;
                     }
                     //stop displaying the view where it was before it was dragged
@@ -501,15 +508,29 @@ public class TestGame extends AppCompatActivity {
                                     .load(id)
                                     .fitCenter()
                                     .into(wordHintPic);
+
+                            //game has been won, start reward
+                            wordHintPic.setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View arg0) {
+                                    Intent showRewards = new Intent(getApplicationContext(),PresentReward.class);
+
+                                    //Bring existing activity instance to the foreground if it exists or create a
+                                    // new one if it does not exist
+                                    showRewards.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                    startActivity(showRewards);
+                                }
+                            });
+
                             break;
                         }
                         Context c = getApplicationContext();
+                        //increment the currentRound
+                        currentRound++;
 
                         currentWord = wordList.get(0);
                         wordList.remove(0);
                         GameSetup(currentWord);
                         //increment the currentRound
-                        currentRound++;
 
                     }
                     break;
@@ -521,5 +542,9 @@ public class TestGame extends AppCompatActivity {
             }
             return true;
         }
+
+
     }
+
+
 }
