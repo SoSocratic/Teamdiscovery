@@ -42,7 +42,6 @@ public class TestGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_game);
-        initImages();
 
         //set a string with the package for use later
         packa = getPackageName();
@@ -391,50 +390,6 @@ public class TestGame extends AppCompatActivity {
         }
     }
 
-    private void initImages(){
-
-        ImageView image_view = (ImageView) findViewById(R.id.imageView);
-        Glide.with(this)
-                .load(R.drawable.children)
-                .fitCenter()
-                .into(image_view);
-
-        ImageView image_view_three = (ImageView) findViewById(R.id.imageView3);
-        Glide.with(this)
-                .load(R.drawable.guardian)
-                .fitCenter()
-                .into(image_view_three);
-
-        ImageView image_view_two = (ImageView) findViewById(R.id.imageView2);
-        Glide.with(this)
-                .load(R.drawable.childid)
-                .fitCenter()
-                .into(image_view_two);
-
-        ImageButton addavatar_button = (ImageButton) findViewById(R.id.anc_add_avatar);
-        Glide.with(this)
-                .load(R.drawable.addavatar)
-                .fitCenter()
-                .into(addavatar_button);
-
-        ImageButton create_button = (ImageButton) findViewById(R.id.anc_bttn_create);
-        Glide.with(this)
-                .load(R.drawable.create)
-                .fitCenter()
-                .into(create_button);
-
-        ImageButton setting_button = (ImageButton) findViewById(R.id.anc_sett);
-        Glide.with(this)
-                .load(R.drawable.settings)
-                .fitCenter()
-                .into(setting_button);
-
-        ImageButton aboot_button = (ImageButton) findViewById(R.id.anc_info); //Eh?
-        Glide.with(this)
-                .load(R.drawable.about)
-                .fitCenter()
-                .into(aboot_button); //Eh?
-    }
 
     private class ChoiceDragListener implements OnDragListener {
         @Override
@@ -472,9 +427,7 @@ public class TestGame extends AppCompatActivity {
                     //check if all 3 are correct/invisible
                     if(option1.getVisibility() == view.INVISIBLE && option2.getVisibility() == view.INVISIBLE && option3.getVisibility() == view.INVISIBLE){
                         //win condition logic goes here
-                        currentWord = wordList.get(0);
-                        wordList.remove(0);
-                        GameSetup(currentWord);
+
                         if(currentRound == 5){
                             //end activity and show the final reward and congrats for completing the whole round
                             //change hint picture to success pic
@@ -505,6 +458,9 @@ public class TestGame extends AppCompatActivity {
                         }
                         Context c = getApplicationContext();
 
+                        currentWord = wordList.get(0);
+                        wordList.remove(0);
+                        GameSetup(currentWord);
                         //increment the currentRound
                         currentRound++;
 
