@@ -7,11 +7,13 @@ package com.example.annaroxas.teamdiscovery;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
+import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -71,8 +73,8 @@ public class XMLRead extends Application {
 
     public static List<String> XMLWordParse(android.content.res.XmlResourceParser resParser, int three, int four, int five) throws IOException, XmlPullParserException {
 
-        List<String> wordList = Collections.<String>emptyList();
-        List<String> bufferList = Collections.<String>emptyList();
+        List<String> wordList = new ArrayList<String>();
+        List<String> bufferList = new ArrayList<String>();
         String tagTest = "";
         String tag = "";
         int length = 3;
@@ -107,6 +109,7 @@ public class XMLRead extends Application {
                     case XmlPullParser.TEXT:
                         //add the word to the buffer list
                         bufferList.add(xpp.getText());
+                        Log.v("after add", bufferList.toString());
                         break;
                     case XmlPullParser.END_TAG:
                         tagTest = xpp.getName();
@@ -114,33 +117,34 @@ public class XMLRead extends Application {
                         //if we reach a letter count end tag shuffle the list for randomization
                         if(tagTest.equals(tag)) {
                             Collections.shuffle(bufferList);
-                        }
-                        //get the number of words for the current letter count
-                        //and set the starting tag to test later
-                        switch (length) {
-                            case 3:
-                                wordCount = three;
-                                tagTest = "three";
-                                break;
-                            case 4:
-                                wordCount = four;
-                                tagTest = "four";
-                                break;
-                            case 5:
-                                wordCount = five;
-                                tagTest = "five";
-                                break;
-                        }
+                            Log.v("post shuffle", bufferList.toString());
 
-                        //grab the number of words needed for the letter count from the randomized bufferList
-                        for (int count = 0; count > wordCount; count++) {
-                            wordList.add(bufferList.get(count));
-                        }
-                        //increment length of words being grabbed
-                        length++;
+                            //get the number of words for the current letter count
+                            //and set the starting tag to test later
+                            switch (length) {
+                                case 3:
+                                    wordCount = three;
+                                    break;
+                                case 4:
+                                    wordCount = four;
+                                    break;
+                                case 5:
+                                    wordCount = five;
+                                    break;
+                            }
 
-                        //empty the buffer of words of the previous length
-                        bufferList.clear();
+                            //grab the number of words needed for the letter count from the randomized bufferList
+                            for (int count = 0; count < wordCount; count++) {
+                                wordList.add(bufferList.get(count));
+                                Log.v("word list add", wordList.toString());
+
+                            }
+                            //increment length of words being grabbed
+                            length++;
+
+                            //empty the buffer of words of the previous length
+                            bufferList.clear();
+                        }
                         break;
 
                     default:
