@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -35,6 +38,7 @@ public class TestGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_game);
+        initImages();
 
         //set a string with the package for use later
         packa = getPackageName();
@@ -242,6 +246,51 @@ public class TestGame extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    private void initImages(){
+
+        ImageView image_view = (ImageView) findViewById(R.id.imageView);
+        Glide.with(this)
+                .load(R.drawable.children)
+                .fitCenter()
+                .into(image_view);
+
+        ImageView image_view_three = (ImageView) findViewById(R.id.imageView3);
+        Glide.with(this)
+                .load(R.drawable.guardian)
+                .fitCenter()
+                .into(image_view_three);
+
+        ImageView image_view_two = (ImageView) findViewById(R.id.imageView2);
+        Glide.with(this)
+                .load(R.drawable.childid)
+                .fitCenter()
+                .into(image_view_two);
+
+        ImageButton addavatar_button = (ImageButton) findViewById(R.id.anc_add_avatar);
+        Glide.with(this)
+                .load(R.drawable.addavatar)
+                .fitCenter()
+                .into(addavatar_button);
+
+        ImageButton create_button = (ImageButton) findViewById(R.id.anc_bttn_create);
+        Glide.with(this)
+                .load(R.drawable.create)
+                .fitCenter()
+                .into(create_button);
+
+        ImageButton setting_button = (ImageButton) findViewById(R.id.anc_sett);
+        Glide.with(this)
+                .load(R.drawable.settings)
+                .fitCenter()
+                .into(setting_button);
+
+        ImageButton aboot_button = (ImageButton) findViewById(R.id.anc_info); //Eh?
+        Glide.with(this)
+                .load(R.drawable.about)
+                .fitCenter()
+                .into(aboot_button); //Eh?
     }
 
     private class ChoiceDragListener implements OnDragListener {
